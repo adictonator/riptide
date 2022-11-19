@@ -1,0 +1,6 @@
+{
+	"liquid.format.enable": true,
+	"cSpell.enableFiletypes": [
+		"liquid"
+	]
+}
