@@ -9,7 +9,7 @@
 	"endNewline": true,
 	"markup": {
 		"correct": false,
-		"quoteConvert": "double",
+		"quoteConvert": "single",
 		"delimiterSpacing": true,
 		"selfCloseSpace": true,
 		"commentNewline": true,
