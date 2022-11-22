@@ -100,7 +100,8 @@
         class="slideshow banner banner--{{ section.settings.slide_height }} grid grid--1-col slider slider--everywhere{% if section.settings.show_text_below %} banner--mobile-bottom{% endif %}{% if section.blocks.first.settings.image == blank %} slideshow--placeholder{% endif %}"
         data-autoplay="{{ section.settings.auto_rotate }}"
         data-speed="{{ section.settings.change_slides_speed }}"
-        id="Slider-{{ section.id }}">
+        id="Slider-{{ section.id }}"
+        style="height: {{ section.settings.slide_height }}px">
         {%- for block in section.blocks -%}
             <style>
                 #Slide-{{ section.id }}-{{ forloop.index }}.banner__media::after {
@@ -262,6 +263,18 @@
                     {
                         "value": "large",
                         "label": "t:sections.slideshow.settings.slide_height.options__4.label"
+                    },
+                    {
+                        "value": "450",
+                        "label": "t:sections.slideshow.settings.slide_height.options__5.label"
+                    },
+                    {
+                        "value": "650",
+                        "label": "t:sections.slideshow.settings.slide_height.options__6.label"
+                    },
+                    {
+                        "value": "850",
+                        "label": "t:sections.slideshow.settings.slide_height.options__7.label"
                     }
                 ],
                 "default": "adapt_image",
