@@ -51,7 +51,7 @@
 		"quoteConvert": "single",
 		"elseNewline": true,
 		"functionNameSpace": true,
-		"functionSpace": true,
+		"functionSpace": false,
 		"ternaryLine": true,
 		"braceNewline": false,
 		"bracePadding": false,
