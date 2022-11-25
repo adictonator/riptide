@@ -9,7 +9,7 @@
 	"endNewline": true,
 	"markup": {
 		"correct": false,
-		"quoteConvert": "single",
+		"quoteConvert": "double",
 		"delimiterSpacing": true,
 		"selfCloseSpace": true,
 		"commentNewline": true,
@@ -36,7 +36,7 @@
 		"sortProperties": true,
 		"sortSelectors": true,
 		"noLeadZero": true,
-		"quoteConvert": "single",
+		"quoteConvert": "none",
 		"classPadding": true,
 		"compressCSS": false
 	},
