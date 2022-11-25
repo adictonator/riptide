@@ -4,7 +4,15 @@
     "heading_scale": 100,
     "type_body_font": "nunito_sans_n4",
     "body_scale": 100,
+    "buttons_border_thickness": 1,
+    "buttons_border_opacity": 100,
+    "buttons_radius": 0,
+    "buttons_shadow_opacity": 15,
+    "buttons_shadow_horizontal_offset": 0,
+    "buttons_shadow_vertical_offset": 4,
+    "buttons_shadow_blur": 5,
     "cart_type": "drawer",
+    "show_cart_note": false,
     "checkout_logo_position": "center",
     "checkout_logo_size": "small",
     "checkout_body_background_color": "#ffffff",
@@ -68,34 +76,6 @@
       },
       "footer": {
         "type": "footer",
-        "blocks": {
-          "41f0af33-3d49-44aa-a59d-5834ac197997": {
-            "type": "image",
-            "settings": {
-              "image_width": 100,
-              "alignment": "center"
-            }
-          },
-          "0eb63adf-9b38-43f7-8f80-1bed60c9e051": {
-            "type": "text",
-            "settings": {
-              "heading": "Heading",
-              "subtext": "<p>Share contact information, store details, and brand content with your customers.<\/p>"
-            }
-          },
-          "6b11784f-c5bf-4331-afcb-9b3caf450320": {
-            "type": "link_list",
-            "settings": {
-              "heading": "Quick links",
-              "menu": "footer"
-            }
-          }
-        },
-        "block_order": [
-          "41f0af33-3d49-44aa-a59d-5834ac197997",
-          "0eb63adf-9b38-43f7-8f80-1bed60c9e051",
-          "6b11784f-c5bf-4331-afcb-9b3caf450320"
-        ],
         "settings": {
           "color_scheme": "background-1",
           "newsletter_enable": false,
