@@ -1,24 +1,3 @@
-{%- capture flickity_options -%}
-    {
-    "prevNextButtons": false,
-                                                                                                                                                                                                                          "wrapAround": true,
-                                                                                                                                                                                                                          "dragThreshold": 16,
-                                                                                                                                                                                                                          "pageDots":{%- if section.blocks.size > 1 -%}true{%- else -%}false{%- endif -%},
-    "autoPlay":
-    {%- if section.settings.autoplay -%}
-        {{ section.settings.cycle_speed | times: 1000 }}{%- else -%}false{%- endif -%}
-    }
-{%- endcapture -%}
-
-{%- assign should_show_nav = false -%}
-
-{%- for block in section.blocks -%}
-    {%- if block.settings.logo -%}
-        {%- assign should_show_nav = true -%}
-        {%- break -%}
-    {%- endif -%}
-{%- endfor -%}
-
 <div data-section-id="{{ section.id }}">
     <div id="_x">
         {%- for block in section.blocks -%}
@@ -33,27 +12,14 @@
                     <img
                         alt="{{ block.settings.logo.alt | escape }}"
                         class="Testimonial__Logo hidden-lap-and-up mt-5 mx-auto"
-                        src="{{ block.settings.logo | img_url: '300x' }}">
+                        height="{{ block.settings.logo.height }}"
+                        loading="lazy"
+                        src="{{ block.settings.logo | image_url: '300x' }}"
+                        width="{{ block.settings.logo.width }}">
                 {%- endif -%}
             </div>
         {%- endfor -%}
     </div>
-
-    {%- comment -%}
-        {%- if should_show_nav -%}
-        <div class='TestimonialNav hidden-pocket'>
-        {%- for block in section.blocks -%}
-        {%- if block.settings.logo != blank -%}
-        <img
-        alt="{{ block.settings.logo.alt | escape }}"
-        class="TestimonialNav__Item {% if forloop.first %}is-selected{% endif %}"
-        data-index="{{ forloop.index0 }}"
-        src="{{ block.settings.logo | img_url: "300x" }}">
-        {%- endif -%}
-        {%- endfor -%}
-        </div>
-        {%- endif -%}
-    {%- endcomment -%}
 </div>
 
 <style>
@@ -64,14 +30,13 @@
 </style>
 
 {%- javascript -%}
-    $ (document).ready (function () {
+    document.addEventListener ('DOMContentLoaded', () => {
         $ ('#_x').slick ({
             slidesToShow: 1,
             slidesToScroll: 1,
             autoplay: true,
             autoplaySpeed: 3000,
-
-            // adaptiveHeight: true,
+            adaptiveHeight: true,
             arrows: false
         });
     });
