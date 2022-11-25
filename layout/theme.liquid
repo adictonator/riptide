@@ -25,10 +25,19 @@
                 rel="preconnect">
         {%- endunless -%}
 
+        <link
+            href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"
+            rel="stylesheet"
+            type="text/css" />
+
+        <script
+            crossorigin="anonymous"
+            integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
+            src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
         <title>
             {{ page_title }}
             {%- if current_tags -%}
-                &ndash; tagged "{{ current_tags | join: ', ' }}"{%- endif -%}
+                &ndash; tagged "{{ current_tags | join: ", " }}"{%- endif -%}
             {%- if current_page != 1 -%}
                 &ndash; Page {{ current_page }}{%- endif -%}
             {%- unless page_title contains shop.name -%}
@@ -39,15 +48,15 @@
             <meta content="{{ page_description | escape }}" name="description">
         {%- endif -%}
 
-        {%- render 'meta-tags' -%}
+        {%- render "meta-tags" -%}
 
         <script defer="defer" src="{{ 'global.js' | asset_url }}"></script>
         {{ content_for_header }}
 
         {%- liquid
-	  assign body_font_bold = settings.type_body_font | font_modify: 'weight', 'bold'
-	  assign body_font_italic = settings.type_body_font | font_modify: 'style', 'italic'
-	  assign body_font_bold_italic = body_font_bold | font_modify: 'style', 'italic'
+	  assign body_font_bold = settings.type_body_font | font_modify: "weight", "bold"
+	  assign body_font_italic = settings.type_body_font | font_modify: "style", "italic"
+	  assign body_font_bold_italic = body_font_bold | font_modify: "style", "italic"
 	-%}
 
         {%- style -%}
@@ -296,8 +305,8 @@
             }
         {% endstyle %}
 
-        {{ 'base.css' | asset_url | stylesheet_tag }}
-        {%- comment -%}{{ 'app.css' | asset_url | stylesheet_tag }}{%- endcomment -%}
+        {{ "base.css" | asset_url | stylesheet_tag }}
+        {{ "app.css" | asset_url | stylesheet_tag }}
 
         {%- unless settings.type_body_font.system? -%}
             <link
@@ -343,12 +352,12 @@
             {{ "accessibility.skip_to_text" | t }}
         </a>
 
-        {%- if settings.cart_type == 'drawer' -%}
-            {%- render 'cart-drawer' -%}
+        {%- if settings.cart_type == "drawer" -%}
+            {%- render "cart-drawer" -%}
         {%- endif -%}
 
-        {%- section 'announcement-bar' -%}
-        {%- section 'header' -%}
+        {%- section "announcement-bar" -%}
+        {%- section "header" -%}
         <main
             class="content-for-layout focus-none"
             id="MainContent"
@@ -357,11 +366,11 @@
             {{ content_for_layout }}
         </main>
 
-        {%- section 'footer' -%}
+        {%- section "footer" -%}
 
         <ul hidden>
-            <li id="a11y-refresh-page-message">{{ 'accessibility.refresh_page' | t }}</li>
-            <li id="a11y-new-window-message">{{ 'accessibility.link_messages.new_window' | t }}</li>
+            <li id="a11y-refresh-page-message">{{ "accessibility.refresh_page" | t }}</li>
+            <li id="a11y-new-window-message">{{ "accessibility.link_messages.new_window" | t }}</li>
         </ul>
 
         <script>
@@ -397,6 +406,7 @@
         {%- if settings.predictive_search_enabled -%}
             <script defer="defer" src="{{ 'predictive-search.js' | asset_url }}"></script>
         {%- endif -%}
-        {%- comment -%}<script src="{{ 'app.js' | asset_url }}" defer="defer"></script>{%- endcomment -%}
+
+        <script src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     </body>
 </html>
