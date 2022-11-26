@@ -1,50 +1,55 @@
 {
   "sections": {
-    "689f3b0c-7fc9-4c54-aae4-70b176e26daf": {
-      "type": "image-banner",
+    "ce51a075-b6f6-4d0f-8aa8-a963cf8b93fd": {
+      "type": "slideshow",
       "blocks": {
-        "template--15722858479771__689f3b0c-7fc9-4c54-aae4-70b176e26daf-16693811618cf92b88-0": {
-          "type": "heading",
+        "template--15722858479771__ce51a075-b6f6-4d0f-8aa8-a963cf8b93fd-16694563469c09f4ce-0": {
+          "type": "slide",
           "settings": {
-            "heading": "Riptide v1.0",
-            "heading_size": "h0"
+            "heading": "Image slide",
+            "heading_size": "h0",
+            "subheading": "Tell your brand's story through images",
+            "button_label": "Button label",
+            "link": "shopify:\/\/collections",
+            "button_style_secondary": true,
+            "box_align": "middle-center",
+            "show_text_box": true,
+            "text_alignment": "center",
+            "image_overlay_opacity": 0,
+            "color_scheme": "background-1",
+            "text_alignment_mobile": "center"
           }
         },
-        "template--15722858479771__689f3b0c-7fc9-4c54-aae4-70b176e26daf-16693811618cf92b88-1": {
-          "type": "text",
+        "template--15722858479771__ce51a075-b6f6-4d0f-8aa8-a963cf8b93fd-16694563469c09f4ce-1": {
+          "type": "slide",
           "settings": {
-            "text": "Give customers details about the banner image(s) or content on the template.",
-            "text_style": "body"
-          }
-        },
-        "template--15722858479771__689f3b0c-7fc9-4c54-aae4-70b176e26daf-16693811618cf92b88-2": {
-          "type": "buttons",
-          "settings": {
-            "button_label_1": "Button label",
-            "button_link_1": "",
-            "button_style_secondary_1": false,
-            "button_label_2": "Button label",
-            "button_link_2": "",
-            "button_style_secondary_2": false
+            "heading": "Image slide",
+            "heading_size": "h1",
+            "subheading": "Tell your brand's story through images",
+            "button_label": "Button label",
+            "link": "",
+            "button_style_secondary": false,
+            "box_align": "middle-center",
+            "show_text_box": true,
+            "text_alignment": "center",
+            "image_overlay_opacity": 0,
+            "color_scheme": "background-1",
+            "text_alignment_mobile": "center"
           }
         }
       },
       "block_order": [
-        "template--15722858479771__689f3b0c-7fc9-4c54-aae4-70b176e26daf-16693811618cf92b88-0",
-        "template--15722858479771__689f3b0c-7fc9-4c54-aae4-70b176e26daf-16693811618cf92b88-1",
-        "template--15722858479771__689f3b0c-7fc9-4c54-aae4-70b176e26daf-16693811618cf92b88-2"
+        "template--15722858479771__ce51a075-b6f6-4d0f-8aa8-a963cf8b93fd-16694563469c09f4ce-0",
+        "template--15722858479771__ce51a075-b6f6-4d0f-8aa8-a963cf8b93fd-16694563469c09f4ce-1"
       ],
       "settings": {
-        "image_overlay_opacity": 0,
-        "image_height": "large",
-        "adapt_height_first_image": true,
-        "desktop_content_position": "middle-center",
-        "show_text_box": true,
-        "desktop_content_alignment": "center",
-        "color_scheme": "background-1",
-        "mobile_content_alignment": "center",
-        "stack_images_on_mobile": true,
-        "show_text_below": true
+        "layout": "full_bleed",
+        "slide_height": "adapt_image",
+        "slider_visual": "counter",
+        "auto_rotate": false,
+        "change_slides_speed": 5,
+        "show_text_below": true,
+        "accessibility_info": "Slideshow about our brand"
       }
     },
     "28174b9a-6888-4090-b596-f09a71d7ad63": {
@@ -229,7 +234,7 @@
     }
   },
   "order": [
-    "689f3b0c-7fc9-4c54-aae4-70b176e26daf",
+    "ce51a075-b6f6-4d0f-8aa8-a963cf8b93fd",
     "28174b9a-6888-4090-b596-f09a71d7ad63",
     "408ad8c8-3b15-4a50-84b9-46e5d74ad373",
     "50b13499-9193-43cf-8bbd-ff1fe74a10e5",
