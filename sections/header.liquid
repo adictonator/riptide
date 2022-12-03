@@ -376,6 +376,7 @@ endif
     {%- endif -%}
 
     {%- if section.settings.logo_position == 'top-center' or section.settings.menu == blank -%}
+		{% if section.settings.enable_search %}
         <details-modal class='header__search'>
             <details>
                 <summary
@@ -393,8 +394,8 @@ endif
                                 class='modal__toggle-close icon icon-close'
                                 focusable='false'>
                                 <use href='#icon-close' /></svg>
-                            </span>
-                        </summary>
+                    </span>
+                </summary>
                         <div
                             aria-label="{{ "general.search.search" | t }}"
                             aria-modal='true'
@@ -481,6 +482,7 @@ endif
                     </div>
                 </details>
             </details-modal>
+        {%- endif -%}
         {%- endif -%}
 
         {%- if section.settings.logo_position != 'middle-center' -%}
@@ -660,6 +662,7 @@ endif
         {%- endif -%}
 
         <div class='header__icons'>
+			{% if section.settings.enable_search %}
             <details-modal class='header__search'>
                 <details>
                     <summary
@@ -766,6 +769,7 @@ endif
                 </div>
             </details>
         </details-modal>
+	{% endif %}
 
         {%- if shop.customer_accounts_enabled -%}
             <a class="header__icon header__icon--account link focus-inset{% if section.settings.menu != blank %} small-hide{% endif %}" href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}">
@@ -1075,6 +1079,13 @@ endif
                 "default": true,
                 "label": "t:sections.header.settings.enable_sticky_header.label",
                 "info": "t:sections.header.settings.enable_sticky_header.info"
+            },
+			{
+                "type": "checkbox",
+                "id": "enable_search",
+                "default": true,
+                "label": "Enable Search On Site",
+                "info": "Shows search icon on the header."
             },
             {
                 "type": "header",
