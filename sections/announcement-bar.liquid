@@ -12,7 +12,9 @@
                             <a class="announcement-bar__link link link--text focus-inset animate-arrow" href="{{ block.settings.link }}">
                             {%- endif -%}
                             <div class="page-width">
-                                <p class="announcement-bar__message {{ block.settings.text_alignment }} h5">
+                                <p
+                                    class="announcement-bar__message {{ block.settings.text_alignment }} h5"
+                                    {%- if block.settings.custom_color -%}style="color: {{ block.settings.custom_color}}"{%- endif -%}>
                                     {{ block.settings.text | escape }}
                                     {%- if block.settings.link != blank -%}
                                         {%- render "icon-arrow" -%}
@@ -117,6 +119,13 @@
                         ],
                         "default": "accent-1",
                         "label": "t:sections.all.colors.label"
+                    },
+                    {
+                        "type": "color",
+                        "id": "custom_color",
+                        "label": "Custom Text Color",
+                        "info": "Select custom color for announcement text.",
+                        "default": "#BADA55"
                     },
                     {
                         "type": "url",
