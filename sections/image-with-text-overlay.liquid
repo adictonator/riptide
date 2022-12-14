@@ -6,13 +6,9 @@
         {{ section.settings.image.height }}
     {%- endif -%}
 {%- endcapture -%}
-<div
-    class="flex flex-col items-center justify-center min-h-[600px]"
-    {%- if section.settings.image -%}style="background: url({{ section.settings.image | image_url }})"{%- endif -%}>
+<div class="flex flex-col items-center justify-center min-h-[600px]" {%- if section.settings.image -%}style="background: url({{ section.settings.image | image_url }}) center; background-size: cover;"{%- endif -%}>
     <div class="w-full absolute inset-0 h-full">
-        <div
-            class="before:absolute before:inset-0 before:w-full before:h-full before:bg-[color:var(--overlay)] block"
-            {%- if section.settings.image -%}data-bgset="{{ section.settings.image | image_url: mobile_size, crop: 'center' }} 750w, {{ section.settings.image | img_url: '1000x' }} 1000w, {{ section.settings.image | img_url: '1500x' }} 1500w"{%- endif -%}>
+        <div class="before:absolute before:inset-0 before:w-full before:h-full before:bg-[color:var(--overlay)] block" {%- if section.settings.image -%}data-bgset="{{ section.settings.image | image_url: mobile_size, crop: 'center' }} 750w, {{ section.settings.image | img_url: '1000x' }} 1000w, {{ section.settings.image | img_url: '1500x' }} 1500w"{%- endif -%}>
             <noscript>
                 <div class="ImageHero__Image" style="background-image: url({{ section.settings.image | img_url: '1000x' }})"></div>
             </noscript>
@@ -50,9 +46,11 @@
 </div>
 {%- assign overlay_opacity = section.settings.overlay_opacity | divided_by: 100.0 -%}
 {%- style -%}
-    :root {
-        --coco: {{ section.settings.text_color }};
-        --overlay: {{ section.settings.overlay_color | color_modify: 'alpha', overlay_opacity }};
+    :root  {
+        --coco: {{ section.settings.text_color }}
+        ;
+        --overlay: {{ section.settings.overlay_color | color_modify: 'alpha', overlay_opacity }}
+        ;
     }
 {%- endstyle -%}
 
