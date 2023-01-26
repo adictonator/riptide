@@ -170,7 +170,7 @@
     Generate main wrapper element.
 {%- endcomment -%}
 {%- liquid
-	assign cls = 'header-wrapper color-' | append: section.settings.color_scheme | append: ' gradient'
+	assign cls = 'header-wrapper dark:bg-slate-800 dark:text-slate-300 color-' | append: section.settings.color_scheme | append: ' gradient'
 
 	if section.settings.show_line_separator
 		assign cls = cls | append: ' header-wrapper--border-bottom'
@@ -494,14 +494,14 @@ endif
                         {%- assign logo_alt = section.settings.logo.alt | default: shop.name | escape -%}
                         {%- assign logo_height = section.settings.logo_width | divided_by: section.settings.logo.aspect_ratio -%}
                         {{ section.settings.logo | image_url: width: section.settings.width | image_tag:
-                           class: 'header__heading-logo'
+                           class: 'header__heading-logo dark:text-slate-300'
                            , widths: '50, 100, 150, 200, 250, 300, 400, 500'
                            , height: logo_height
                            , width: section.settings.logo_width
                            , alt: logo_alt
                            }}
                     {%- else -%}
-                        <span class='h2'>{{ shop.name }}</span>
+                        <span class='h2 dark:text-slate-300'>{{ shop.name }}</span>
                     {%- endif -%}
                 </a>
                 {%- if request.page_type == 'index' -%}
@@ -565,8 +565,10 @@ endif
                                 {%- else -%}
                                     <a
                                         href="{{ link.url }}"
-                                        class='header__menu-item list-menu__item link link--text focus-inset'
-                                        {%- if link.current -%}aria-current='page'{%- endif -%}>
+                                        class='header__menu-item list-menu__item link link--text focus-inset dark:text-slate-300'
+                                        {%- if link.current -%}
+											aria-current='page'
+										{%- endif -%}>
                                         <span
                                             {%- if link.current -%}class='header__active-menu-item'{%- endif -%}>{{ link.title | escape }}</span>
                                     </a>
@@ -624,10 +626,14 @@ endif
                                 {%- else -%}
                                     <a
                                         href="{{ link.url }}"
-                                        class='header__menu-item list-menu__item link link--text focus-inset'
+                                        class='header__menu-item list-menu__item link link--text focus-inset dark:text-slate-300'
                                         {%- if link.current -%}aria-current='page'{%- endif -%}>
                                         <span
-                                            {%- if link.current -%}class='header__active-menu-item'{%- endif -%}>{{ link.title | escape }}</span>
+                                            {%- if link.current -%}
+												class='header__active-menu-item'
+											{%- endif -%}>
+											{{ link.title | escape }}
+											</span>
                                     </a>
                                 {%- endif -%}
                             </li>
@@ -646,14 +652,14 @@ endif
                         {%- assign logo_alt = section.settings.logo.alt | default: shop.name | escape -%}
                         {%- assign logo_height = section.settings.logo_width | divided_by: section.settings.logo.aspect_ratio -%}
                         {{ section.settings.logo | image_url: width: section.settings.width | image_tag:
-                           class: 'header__heading-logo'
+                           class: 'header__heading-logo dark:text-slate-300'
                            , widths: '50, 100, 150, 200, 250, 300, 400, 500'
                            , height: logo_height
                            , width: section.settings.logo_width
                            , alt: logo_alt
                            }}
                     {%- else -%}
-                        <span class='h2'>{{ shop.name }}</span>
+                        <span class='h2 dark:text-slate-300'>{{ shop.name }}</span>
                     {%- endif -%}
                 </a>
                 {%- if request.page_type == 'index' -%}
@@ -662,6 +668,13 @@ endif
         {%- endif -%}
 
         <div class='header__icons'>
+			{% if section.settings.dark_mode %}
+				<label for="theme" class="flex mr-5 items-center cursor-pointer relative" title="Switch theme">
+					<input type="checkbox" id="theme" class="sr-only">
+					<div class="toggle-bg bg-gray-200 border-2 border-gray-200 h-10 w-20 rounded-full">&nbsp;</div>
+				</label>
+			{% endif %}
+
 			{% if section.settings.enable_search %}
             <details-modal class='header__search'>
                 <details>
@@ -672,13 +685,13 @@ endif
                         <span>
                             <svg
                                 aria-hidden='true'
-                                class='modal__toggle-open icon icon-search'
+                                class='modal__toggle-open icon icon-search dark:text-slate-300 dark:fill-current'
                                 focusable='false'>
                                 <use href='#icon-search' />
                             </svg>
                             <svg
                                 aria-hidden='true'
-                                class='modal__toggle-close icon icon-close'
+                                class='modal__toggle-close icon icon-close dark:text-slate-300 dark:fill-current'
                                 focusable='false'>
                                 <use href='#icon-close' />
                             </svg>
@@ -687,7 +700,7 @@ endif
                     <div
                         aria-label="{{ "general.search.search" | t }}"
                         aria-modal='true'
-                        class='search-modal modal__content gradient'
+                        class='search-modal modal__content gradient dark:text-slate-300 dark:fill-current'
                         role='dialog'>
                         <div class='modal-overlay'></div>
                         <div class="search-modal__content{% if settings.inputs_shadow_vertical_offset != 0 and settings.inputs_shadow_vertical_offset < 0 %} search-modal__content-top{% else %} search-modal__content-bottom{% endif %}" tabindex='-1'>
@@ -715,7 +728,7 @@ endif
                                         <button aria-label="{{ "general.search.search" | t }}" class='search__button field__button'>
                                             <svg
                                                 aria-hidden='true'
-                                                class='icon icon-search'
+                                                class='icon icon-search dark:text-slate-300 dark:fill-current'
                                                 focusable='false'>
                                                 <use href='#icon-search' />
                                             </svg>
@@ -760,7 +773,7 @@ endif
                             type='button'>
                             <svg
                                 aria-hidden='true'
-                                class='icon icon-close'
+                                class='icon icon-close dark:text-slate-300 dark:fill-current'
                                 focusable='false'>
                                 <use href='#icon-close' />
                             </svg>
@@ -934,6 +947,20 @@ endif
     }
 
     customElements.define ('sticky-header', StickyHeader);
+
+	const switcher = document.getElementById('theme')
+	switcher.addEventListener('change', ({ target }) => {
+		let type = localStorage.theme ? localStorage.theme : 'light'
+		if (target.checked) {
+			document.documentElement.classList.add('dark')
+			type = 'dark'
+		} else {
+			document.documentElement.classList.remove('dark')
+			type = 'light'
+		}
+
+		localStorage.theme = type
+	})
 {% endjavascript %}
 
 <script type='application/ld+json'>
@@ -1086,6 +1113,17 @@ endif
                 "default": true,
                 "label": "Enable Search On Site",
                 "info": "Shows search icon on the header."
+            },
+            {
+                "type": "header",
+                "content": "Dark Mode"
+            },
+			{
+                "type": "checkbox",
+                "id": "dark_mode",
+                "default": false,
+                "label": "Enable Dark Mode Functionality",
+                "info": "Shows theme switcher icon on the header."
             },
             {
                 "type": "header",

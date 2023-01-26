@@ -45,11 +45,11 @@
   endif
 -%}
 
-<div class="color-{{ section.settings.color_scheme }} isolate gradient">
+<div class="color-{{ section.settings.color_scheme }} isolate gradient dark:bg-slate-700 dark:text-slate-300">
   <div class="collection section-{{ section.id }}-padding{% if section.settings.full_width %} collection--full-width{% endif %}">
       <div class="collection__title title-wrapper title-wrapper--no-top-margin page-width{% if show_mobile_slider %} title-wrapper--self-padded-tablet-down{% endif %}{% if show_desktop_slider %} collection__title--desktop-slider{% endif %}">
         {%- if section.settings.title != blank -%}
-          <h2 class="title {{ section.settings.heading_size }}" style="text-align: {{ section.settings.heading_pos }}">{{ section.settings.title | escape }}</h2>
+          <h2 class="title {{ section.settings.heading_size }} dark:text-slate-300" style="text-align: {{ section.settings.heading_pos }}; {% if section.settings.custom_color %} color: {{ section.settings.heading_color }} {% endif %}">{{ section.settings.title | escape }}</h2>
         {%- endif -%}
         {%- if section.settings.description != blank or section.settings.show_description and section.settings.collection.description != empty -%}
           <div class="collection__description {{ section.settings.description_style }}">{%- if section.settings.show_description -%}{{ section.settings.collection.description }}{%- else -%}{{ section.settings.description }}{% endif %}</div>
@@ -157,6 +157,22 @@
       "default": "left",
       "label": "Heading alignment"
     },
+	{
+		"type": "header",
+		"content": "Heading Style"
+	},
+	{
+		"type": "checkbox",
+		"id": "custom_color",
+		"label": "Use custom color",
+		"info": "Enabling this option allows custom color for section heading."
+	},
+	{
+		"type": "color",
+		"id": "heading_color",
+		"label": "Heading Color",
+		"default": "#bada55"
+	},
     {
       "type": "richtext",
       "id": "description",

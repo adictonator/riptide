@@ -60,7 +60,7 @@
     }
 {%- endstyle -%}
 
-<footer class="footer color-{{ section.settings.color_scheme }} gradient section-{{ section.id }}-padding">
+<footer class="footer color-{{ section.settings.color_scheme }} gradient section-{{ section.id }}-padding dark:bg-slate-800 dark:text-slate-300">
     {%- if section.blocks.size > 0 or section.settings.newsletter_enable or section.settings.show_social -%}
         <div class="footer__content-top page-width">
             {%- if section.blocks.size > 0 -%}
@@ -77,12 +77,12 @@
                     {%- for block in section.blocks -%}
                         <div class="footer-block grid__item{% if block.type == 'link_list' %} footer-block--menu{% endif %}" {{ block.shopify_attributes }}>
                             {%- if block.settings.heading != blank -%}
-                                <h2 class="footer-block__heading">{{- block.settings.heading | escape -}}</h2>
+                                <h2 class="footer-block__heading dark:text-slate-300">{{- block.settings.heading | escape -}}</h2>
                             {%- endif -%}
 
                             {%- case block.type -%}
                                 {%- when 'text' -%}
-                                    <div class="footer-block__details-content rte">
+                                    <div class="footer-block__details-content rte dark:text-slate-300">
                                         {{ block.settings.subtext }}
                                     </div>
                                 {%- when 'link_list' -%}
@@ -90,7 +90,7 @@
                                         <ul class="footer-block__details-content list-unstyled">
                                             {%- for link in block.settings.menu.links -%}
                                                 <li>
-                                                    <a class="link link--text list-menu__item list-menu__item--link{% if link.active %} list-menu__item--active{% endif %}" href="{{ link.url }}">
+                                                    <a class="link link--text list-menu__item list-menu__item--link{% if link.active %} list-menu__item--active{% endif %} dark:!text-slate-300" href="{{ link.url }}">
                                                         {{ link.title }}
                                                     </a>
                                                 </li>
@@ -123,7 +123,7 @@
                 {%- if section.settings.newsletter_enable -%}
                     <div class="footer-block__newsletter">
                         {%- if section.settings.newsletter_heading != blank -%}
-                            <h2 class="footer-block__heading">{{ section.settings.newsletter_heading | escape }}</h2>
+                            <h2 class="footer-block__heading dark:text-slate-300">{{ section.settings.newsletter_heading | escape }}</h2>
                         {%- endif -%}
                         {%- form 'customer', id: 'ContactFooter', class: 'footer__newsletter newsletter-form' -%}
                             <input
@@ -281,7 +281,7 @@
                     <localization-form>
                         {%- form 'localization', id: 'FooterCountryForm', class: 'localization-form' -%}
                             <div class="no-js-hidden">
-                                <h2 class="caption-large text-body" id="FooterCountryLabel">{{ 'localization.country_label' | t }}</h2>
+                                <h2 class="caption-large text-body dark:text-slate-300" id="FooterCountryLabel">{{ 'localization.country_label' | t }}</h2>
                                 <div class="disclosure">
                                     <button
                                         aria-controls="FooterCountryList"

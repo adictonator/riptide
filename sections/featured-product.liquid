@@ -42,10 +42,10 @@
   >
 {%- endif -%}
 
-<section class="color-{{ section.settings.color_scheme }} {% if section.settings.secondary_background %}background-secondary{% else %}gradient{% endif %}">
+<section class="color-{{ section.settings.color_scheme }} {% if section.settings.secondary_background %}background-secondary{% else %}gradient{% endif %} dark:bg-slate-700 dark:text-slate-300">
   <div class="page-width section-{{ section.id }}-padding{% if section.settings.secondary_background %} isolate{% endif %}">
     <div class="featured-product product grid grid--1-col gradient color-{{ section.settings.color_scheme }} product--{{ section.settings.media_position }}{% if section.settings.secondary_background == false %} isolate{% endif %} {% if product.media.size > 0 %}grid--2-col-tablet{% else %}product--no-media{% endif %}">
-      <div class="grid__item product__media-wrapper{% if section.settings.media_position == 'right' %} medium-hide large-up-hide{% endif %}">
+      <div class="grid__item product__media-wrapper{% if section.settings.media_position == 'right' %} medium-hide large-up-hide{% endif %} dark:bg-slate-700 dark:text-slate-300">
         <media-gallery
           id="MediaGallery-{{ section.id }}"
           role="region"
@@ -105,7 +105,7 @@
           {%- endif -%}
         </media-gallery>
       </div>
-      <div class="product__info-wrapper grid__item">
+      <div class="product__info-wrapper grid__item dark:bg-slate-700 dark:text-slate-300">
         <div id="ProductInfo-{{ section.id }}" class="product__info-container">
           {%- assign product_form_id = 'product-form-' | append: section.id -%}
 
@@ -115,13 +115,13 @@
                 {% render block %}
               {%- when 'text' -%}
                 <p
-                  class="product__text{% if block.settings.text_style == 'uppercase' %} caption-with-letter-spacing{% elsif block.settings.text_style == 'subtitle' %} subtitle{% endif %}"
+                  class="product__text{% if block.settings.text_style == 'uppercase' %} caption-with-letter-spacing{% elsif block.settings.text_style == 'subtitle' %} subtitle{% endif %} dark:text-slate-500"
                   {{ block.shopify_attributes }}
                 >
                   {{- block.settings.text -}}
                 </p>
               {%- when 'title' -%}
-                <h2 class="product__title {{ block.settings.heading_size }}" {{ block.shopify_attributes }}>
+                <h2 class="product__title {{ block.settings.heading_size }} dark:text-slate-300" {{ block.shopify_attributes }}>
                   {%- if product.title != blank -%}
                     {{ product.title | escape }}
                   {%- else -%}
@@ -169,7 +169,7 @@
                   class="product-form__input product-form__quantity{% if settings.inputs_shadow_vertical_offset != 0 and settings.inputs_shadow_vertical_offset < 0 %} product-form__quantity-top{% endif %}"
                   {{ block.shopify_attributes }}
                 >
-                  <label class="form__label" for="Quantity-{{ section.id }}">
+                  <label class="form__label dark:text-slate-400" for="Quantity-{{ section.id }}">
                     {{ 'products.product.quantity.label' | t }}
                   </label>
                   <quantity-input class="quantity">
@@ -180,7 +180,7 @@
                       {% render 'icon-minus' %}
                     </button>
                     <input
-                      class="quantity__input"
+                      class="quantity__input dark:text-slate-300"
                       type="number"
                       name="quantity"
                       id="Quantity-{{ section.id }}"
@@ -199,12 +199,12 @@
               {%- when 'share' -%}
                 <script src="{{ 'share.js' | asset_url }}" defer="defer"></script>
                 <share-button id="Share-{{ section.id }}" class="share-button" {{ block.shopify_attributes }}>
-                  <button class="share-button__button hidden">
+                  <button class="share-button__button hidden dark:text-slate-300">
                     {% render 'icon-share' %}
                     {{ block.settings.share_label | escape }}
                   </button>
                   <details id="Details-{{ block.id }}-{{ section.id }}">
-                    <summary class="share-button__button">
+                    <summary class="share-button__button dark:text-slate-300">
                       {% render 'icon-share' %}
                       {{ block.settings.share_label | escape }}
                     </summary>
@@ -247,7 +247,7 @@
                     >
                       {%- for option in product.options_with_values -%}
                         <fieldset class="js product-form__input">
-                          <legend class="form__label">{{ option.name }}</legend>
+                          <legend class="form__label dark:text-slate-400">{{ option.name }}</legend>
                           {% render 'product-variant-options', product: product, option: option, block: block %}
                         </fieldset>
                       {%- endfor -%}
@@ -266,7 +266,7 @@
                     >
                       {%- for option in product.options_with_values -%}
                         <div class="product-form__input product-form__input--dropdown">
-                          <label class="form__label" for="Option-{{ section.id }}-{{ forloop.index0 }}">
+                          <label class="form__label dark:text-slate-400" for="Option-{{ section.id }}-{{ forloop.index0 }}">
                             {{ option.name }}
                           </label>
                           <div class="select">
@@ -292,7 +292,7 @@
 
                 <noscript class="product-form__noscript-wrapper-{{ section.id }}">
                   <div class="product-form__input{% if product.has_only_default_variant %} hidden{% endif %}">
-                    <label class="form__label" for="Variants-{{ section.id }}">
+                    <label class="form__label dark:text-slate-400" for="Variants-{{ section.id }}">
                       {{- 'products.product.product_variants' | t -}}
                     </label>
                     <div class="select">
@@ -358,7 +358,7 @@
                           <button
                             type="submit"
                             name="add"
-                            class="product-form__submit button button--full-width {% if block.settings.show_dynamic_checkout %}button--secondary{% else %}button--primary{% endif %}"
+                            class="product-form__submit button button--full-width {% if block.settings.show_dynamic_checkout %}button--secondary{% else %}button--primary{% endif %}dark:text-slate-300 dark:bg-slate-800"
                             {% if product.selected_or_first_available_variant.available == false %}
                               disabled
                             {% endif %}
@@ -374,7 +374,7 @@
                               <svg
                                 aria-hidden="true"
                                 focusable="false"
-                                class="spinner"
+                                class="spinner dark:text-slate-300 dark:fill-current"
                                 viewBox="0 0 66 66"
                                 xmlns="http://www.w3.org/2000/svg"
                               >
@@ -547,7 +547,7 @@
             {% else %}
               href="{{ product.url }}"
             {% endif %}
-            class="link product__view-details animate-arrow"
+            class="link product__view-details animate-arrow dark:text-slate-300"
           >
             {{ 'products.product.view_full_details' | t }}
             {% render 'icon-arrow' %}

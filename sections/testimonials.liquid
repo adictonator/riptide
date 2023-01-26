@@ -1,4 +1,4 @@
-<div data-section-id="{{ section.id }}">
+<div data-section-id="{{ section.id }}" class="dark:bg-slate-600 dark:text-slate-300 py-20">
     <div id="_x">
         {%- for block in section.blocks -%}
             <div class="w-full text-center">
@@ -44,7 +44,7 @@
 {%- schema -%}
     {
         "name": "Testimonials",
-        "class": "section py-20",
+        "class": "section",
         "tag": "section",
         "max_blocks": 6,
         "settings": [

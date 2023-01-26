@@ -322,10 +322,24 @@
                     .classList
                     .add ('shopify-design-mode');
             }
+
+			// Check theme mode.
+			document.addEventListener('DOMContentLoaded', () => {
+				if (localStorage.theme === 'dark' ||
+					(!('theme' in localStorage) &&
+					window.matchMedia('(prefers-color-scheme: dark)').matches)
+				) {
+					document.documentElement.classList.add('dark')
+					document.getElementById('theme').checked = true
+				} else {
+					document.documentElement.classList.remove('dark')
+					document.getElementById('theme').checked = false
+				}
+			})
         </script>
     </head>
 
-    <body class="gradient">
+    <body class="gradient dark:bg-slate-800">
         <a class="skip-to-content-link button visually-hidden" href="#MainContent">
             {{ "accessibility.skip_to_text" | t }}
         </a>
@@ -337,7 +351,7 @@
         {%- section "announcement-bar" -%}
         {%- section "header" -%}
         <main
-            class="content-for-layout focus-none"
+            class="content-for-layout focus-none dark:bg-slate-700"
             id="MainContent"
             role="main"
             tabindex="-1">
@@ -388,5 +402,6 @@
 
         <script defer src="{{ 'jquery-3.6.1.min.js' | asset_url }}"></script>
         <script defer src="{{ 'lib.slick.min.js' | asset_url }}"></script>
+		{% comment %}  {% endcomment %}
     </body>
 </html>

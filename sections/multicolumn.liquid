@@ -28,7 +28,7 @@
   endif
 -%}
 
-<div class="multicolumn color-{{ section.settings.color_scheme }} gradient{% unless section.settings.background_style == "none" and settings.text_boxes_border_thickness > 0 or settings.text_boxes_shadow_opacity > 0 %} background-{{ section.settings.background_style }}{% endunless %}{% if section.settings.title == blank %} no-heading{% endif %}">
+<div class="multicolumn color-{{ section.settings.color_scheme }} gradient{% unless section.settings.background_style == "none" and settings.text_boxes_border_thickness > 0 or settings.text_boxes_shadow_opacity > 0 %} background-{{ section.settings.background_style }}{% endunless %}{% if section.settings.title == blank %} no-heading{% endif %} dark:bg-slate-700 dark:text-slate-300">
     <div class="page-width section-{{ section.id }}-padding isolate">
         {%- unless section.settings.title == blank -%}
             <div class='title-wrapper-with-link title-wrapper--self-padded-mobile title-wrapper--no-top-margin'>
@@ -86,9 +86,9 @@
                                     </div>
                                 </div>
                             {%- endif -%}
-                            <div class='multicolumn-card__info'>
+                            <div class='multicolumn-card__info dark:bg-slate-600 dark:text-slate-300'>
                                 {%- if block.settings.title != blank -%}
-                                    <h3>{{ block.settings.title | escape }}</h3>
+                                    <h3 class="dark:text-slate-400">{{ block.settings.title | escape }}</h3>
                                 {%- endif -%}
                                 {%- if block.settings.text != blank -%}
                                     <div class='rte'>{{ block.settings.text }}</div>
