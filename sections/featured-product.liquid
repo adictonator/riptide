@@ -358,7 +358,7 @@
                           <button
                             type="submit"
                             name="add"
-                            class="product-form__submit button button--full-width {% if block.settings.show_dynamic_checkout %}button--secondary{% else %}button--primary{% endif %}dark:text-slate-300 dark:bg-slate-800"
+                            class="product-form__submit button button--full-width {% if block.settings.show_dynamic_checkout %}button--secondary{% else %}button--primary{% endif %} dark:text-slate-300 dark:bg-slate-800"
                             {% if product.selected_or_first_available_variant.available == false %}
                               disabled
                             {% endif %}
