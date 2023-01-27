@@ -25,8 +25,8 @@
 
 <cart-items class="page-width{% if cart == empty %} is-empty{% else %} section-{{ section.id }}-padding{% endif %}">
   <div class="title-wrapper-with-link">
-    <h1 class="title title--primary">{{ 'sections.cart.title' | t }}</h1>
-    <a href="{{ routes.all_products_collection_url }}" class="underlined-link">{{ 'general.continue_shopping' | t }}</a>
+    <h1 class="title title--primary dark:text-slate-300">{{ 'sections.cart.title' | t }}</h1>
+    <a href="{{ routes.all_products_collection_url }}" class="underlined-link dark:text-slate-300">{{ 'general.continue_shopping' | t }}</a>
   </div>
 
   <div class="cart__warnings">
@@ -44,21 +44,21 @@
   </div>
 
   <form action="{{ routes.cart_url }}" class="cart__contents critical-hidden" method="post" id="cart">
-    <div class="cart__items" id="main-cart-items" data-id="{{ section.id }}">
+    <div class="cart__items dark:border-slate-600" id="main-cart-items" data-id="{{ section.id }}">
       <div class="js-contents">
         {%- if cart != empty -%}
-          <table class="cart-items">
+          <table class="cart-items dark:text-slate-300">
             <caption class="visually-hidden">{{ 'sections.cart.title' | t }}</caption>
             <thead>
               <tr>
-                <th class="caption-with-letter-spacing" colspan="2" scope="col">{{ 'sections.cart.headings.product' | t }}</th>
-                <th class="medium-hide large-up-hide right caption-with-letter-spacing" colspan="1" scope="col">{{ 'sections.cart.headings.total' | t }}</th>
-                <th class="cart-items__heading--wide small-hide caption-with-letter-spacing" colspan="1" scope="col">{{ 'sections.cart.headings.quantity' | t }}</th>
-                <th class="small-hide right caption-with-letter-spacing" colspan="1" scope="col">{{ 'sections.cart.headings.total' | t }}</th>
+                <th class="caption-with-letter-spacing dark:border-slate-600" colspan="2" scope="col">{{ 'sections.cart.headings.product' | t }}</th>
+                <th class="medium-hide large-up-hide right caption-with-letter-spacing dark:border-slate-600" colspan="1" scope="col">{{ 'sections.cart.headings.total' | t }}</th>
+                <th class="cart-items__heading--wide small-hide caption-with-letter-spacing dark:border-slate-600" colspan="1" scope="col">{{ 'sections.cart.headings.quantity' | t }}</th>
+                <th class="small-hide right caption-with-letter-spacing dark:border-slate-600" colspan="1" scope="col">{{ 'sections.cart.headings.total' | t }}</th>
               </tr>
             </thead>
 
-            <tbody>
+            <tbody class="dark:text-slate-300">
               {%- for item in cart.items -%}
                 <tr class="cart-item" id="CartItem-{{ item.index | plus: 1 }}">
                   <td class="cart-item__media">
@@ -82,7 +82,7 @@
                       <p class="caption-with-letter-spacing">{{ item.product.vendor }}</p>
                     {%- endif -%}
 
-                    <a href="{{ item.url }}" class="cart-item__name h4 break">{{ item.product.title | escape }}</a>
+                    <a href="{{ item.url }}" class="cart-item__name h4 break dark:text-slate-300">{{ item.product.title | escape }}</a>
 
                     {%- if item.original_price != item.final_price -%}
                       <div class="cart-item__discounted-prices">
@@ -208,7 +208,7 @@
                       <label class="visually-hidden" for="Quantity-{{ item.index | plus: 1 }}">
                         {{ 'products.product.quantity.label' | t }}
                       </label>
-                      <quantity-input class="quantity">
+                      <quantity-input class="quantity dark:text-slate-300 dark:after:[box-shadow:0_0_0_1px_#cbd5e1]">
                         <button class="quantity__button no-js-hidden" name="minus" type="button">
                           <span class="visually-hidden">{{ 'products.product.quantity.decrease' | t: product: item.product.title | escape }}</span>
                           {% render 'icon-minus' %}
@@ -229,7 +229,7 @@
                       </quantity-input>
 
                       <cart-remove-button id="Remove-{{ item.index | plus: 1 }}" data-index="{{ item.index | plus: 1 }}">
-                        <a href="{{ item.url_to_remove }}" class="button button--tertiary" aria-label="{{ 'sections.cart.remove_title' | t: title: item.title }}">
+                        <a href="{{ item.url_to_remove }}" class="button button--tertiary dark:text-slate-300 dark:fill-current" aria-label="{{ 'sections.cart.remove_title' | t: title: item.title }}">
                           {% render 'icon-remove' %}
                         </a>
                       </cart-remove-button>
@@ -271,26 +271,26 @@
                           <dt class="visually-hidden">
                             {{ 'products.product.price.regular_price' | t }}
                           </dt>
-                          <dd>
-                            <s class="cart-item__old-price price price--end">
+                          <dd">
+                            <s class="cart-item__old-price price price--end dark:text-slate-300">
                               {{ item.original_line_price | money }}
                             </s>
                           </dd>
                           <dt class="visually-hidden">
                             {{ 'products.product.price.sale_price' | t }}
                           </dt>
-                          <dd class="price price--end">
+                          <dd class="price price--end dark:text-slate-300">
                             {{ item.final_line_price | money }}
                           </dd>
                         </dl>
                       {%- else -%}
-                        <span class="price price--end">
+                        <span class="price price--end dark:text-slate-300">
                           {{ item.original_line_price | money }}
                         </span>
                       {%- endif -%}
 
                       {%- if item.variant.available and item.unit_price_measurement -%}
-                        <div class="unit-price caption">
+                        <div class="unit-price caption dark:text-slate-300">
                           <span class="visually-hidden">{{ 'products.product.price.unit_price' | t }}</span>
                           {{ item.variant.unit_price | money }}
                           <span aria-hidden="true">/</span>

@@ -37,25 +37,25 @@
           {% comment %} Heading is the first tabbable element on filter type horizontal {% endcomment %}
           <div id="FacetsWrapperDesktop"{% if filter_type == 'horizontal' %} class="facets__wrapper"{% endif %}>
             {%- if filter_type == 'horizontal' and results.filters != empty -%}
-              <h2 class="facets__heading caption-large text-body" id="verticalTitle" tabindex="-1">{{ 'products.facets.filter_by_label' | t }}</h2>
+              <h2 class="facets__heading caption-large text-body dark:text-slate-300" id="verticalTitle" tabindex="-1">{{ 'products.facets.filter_by_label' | t }}</h2>
             {%- endif -%}
             {% comment %} Pills are right below the title for filter type vertical {% endcomment %}
             {%- if filter_type == 'vertical' -%}
               <div class="active-facets active-facets-desktop">
                 <div class="active-facets-vertical-filter">
                   {%- unless results.filters == empty -%}
-                    <h2 class="facets__heading facets__heading--vertical caption-large text-body" id="verticalTitle" tabindex="-1">{{ 'products.facets.filter_by_label' | t }}</h2>
+                    <h2 class="facets__heading facets__heading--vertical caption-large text-body  dark:text-slate-300" id="verticalTitle" tabindex="-1">{{ 'products.facets.filter_by_label' | t }}</h2>
                   {%- endunless -%}
                   <facet-remove class="active-facets__button-wrapper">
                     <a href="{{ results_url }}" class="active-facets__button-remove underlined-link">
-                      <span>{{ 'products.facets.clear_all' | t }}</span>
+                      <span class="dark:text-slate-300">{{ 'products.facets.clear_all' | t }}</span>
                     </a>
                   </facet-remove>
                 </div>
                 {%- for filter in results.filters -%}
                   {%- for value in filter.active_values -%}
                     <facet-remove>
-                      <a href="{{ value.url_to_remove }}" class="active-facets__button active-facets__button--light">
+                      <a href="{{ value.url_to_remove }}" class="active-facets__button active-facets__button--light  dark:text-slate-300">
                         <span class="active-facets__button-inner button button--tertiary">
                           {{ filter.label }}: {{ value.label | escape }}
                           {% render 'icon-close-small' %}
@@ -90,7 +90,7 @@
                 <details id="Details-{{ forloop.index }}-{{ section.id }}" class="{% if filter_type == 'horizontal' %}disclosure-has-popup facets__disclosure{% else %} facets__disclosure-vertical{% endif %} js-filter" data-index="{{ forloop.index }}"{% if filter_type == 'vertical' and forloop.index == 1 %} open{% endif %}>
                   <summary class="facets__summary caption-large focus-offset" aria-label="{{ filter.label }} ({{ 'products.facets.filters_selected.one' | t: count: filter.active_values.size }})">
                     <div>
-                      <span>{{ filter.label | escape }}{%- if filter_type == 'vertical' -%}<span class="facets__selected no-js-hidden{% if filter.active_values.size == 0 %} hidden{% endif %}"> ({{ filter.active_values.size }})</span>{% endif %}</span>
+                      <span class="dark:text-slate-300">{{ filter.label | escape }}{%- if filter_type == 'vertical' -%}<span class="facets__selected no-js-hidden{% if filter.active_values.size == 0 %} hidden{% endif %}"> ({{ filter.active_values.size }})</span>{% endif %}</span>
                       {% render 'icon-caret' %}
                     </div>
                   </summary>
@@ -218,7 +218,7 @@
                 <details id="Details-{{ forloop.index }}-{{ section.id }}" class="{% if filter_type == 'horizontal' %}disclosure-has-popup facets__disclosure{% else %} facets__disclosure-vertical{% endif %} js-filter" data-index="{{ forloop.index }}"{% if filter_type == 'vertical' and  forloop.index == 1 %} open{% endif %}>
                   <summary class="facets__summary caption-large focus-offset">
                     <div>
-                      <span>{{ filter.label | escape }}</span>
+                      <span class="dark:text-slate-300">{{ filter.label | escape }}</span>
                       {% render 'icon-caret' %}
                     </div>
                   </summary>
@@ -328,11 +328,11 @@
             <div class="facet-filters sorting caption">
               <div class="facet-filters__field">
                 <h2 class="facet-filters__label caption-large text-body">
-                  <label for="SortBy">{{ 'products.facets.sort_by_label' | t }}</label>
+                  <label class="dark:text-slate-300" for="SortBy">{{ 'products.facets.sort_by_label' | t }}</label>
                 </h2>
                 <div class="select">
                   {%- assign sort_by = results.sort_by | default: results.default_sort_by -%}
-                  <select name="sort_by" class="facet-filters__sort select__select caption-large" id="SortBy" aria-describedby="a11y-refresh-page-message">
+                  <select name="sort_by" class="facet-filters__sort select__select caption-large dark:text-slate-300" id="SortBy" aria-describedby="a11y-refresh-page-message">
                     {%- for option in results.sort_options -%}
                       <option value="{{ option.value | escape }}"{% if option.value == sort_by %} selected="selected"{% endif %}>{{ option.name | escape }}</option>
                     {%- endfor -%}
@@ -347,7 +347,7 @@
             </div>
           {%- endif -%}
           <div class="product-count light" role="status">
-            <h2 class="product-count__text text-body">
+            <h2 class="product-count__text text-body dark:text-slate-300">
               <span id="ProductCountDesktop">
                 {%- if results.results_count -%}
                   {{ 'templates.search.results_with_count' | t: terms: results.terms, count: results.results_count }}

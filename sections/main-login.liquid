@@ -15,11 +15,11 @@
 {%- endstyle -%}
 
 <div class="customer login section-{{ section.id }}-padding">
-  <h1 id="recover" tabindex="-1">
+  <h1 id="recover" class="dark:text-slate-300" tabindex="-1">
     {{ 'customer.recover_password.title' | t }}
   </h1>
   <div>
-    <p>
+    <p class="dark:text-slate-300">
       {{ 'customer.recover_password.subtext' | t }}
     </p>
 
@@ -29,6 +29,7 @@
         <input type="email"
           value=""
           name="email"
+		  class="dark:text-slate-300 dark:bg-transparent"
           id="RecoverEmail"
           autocorrect="off"
           autocapitalize="off"
@@ -40,12 +41,12 @@
           {% endif %}
           placeholder="{{ 'customer.login_page.email' | t }}"
         >
-        <label for="RecoverEmail">
+        <label for="RecoverEmail" class="dark:text-slate-300">
           {{ 'customer.login_page.email' | t }}
         </label>
       </div>
       {%- if form.errors -%}
-        <small id="RecoverEmail-email-error" class="form__message">
+        <small id="RecoverEmail-email-error" class="form__message dark:text-slate-300">
           <svg aria-hidden="true" focusable="false" viewBox="0 0 13 13">
             <circle cx="6.5" cy="6.50049" r="5.5" stroke="white" stroke-width="2"/>
             <circle cx="6.5" cy="6.5" r="5.5" fill="#EB001B" stroke="#EB001B" stroke-width="0.7"/>
@@ -66,12 +67,12 @@
     {%- endform -%}
   </div>
 
-  <h1 id="login" tabindex="-1">
+  <h1 id="login" class="dark:text-slate-300" tabindex="-1">
     {{ 'customer.login_page.title' | t }}
   </h1>
   <div>
     {%- if recover_success == true -%}
-      <h3 class="form__message" tabindex="-1" autofocus>
+      <h3 class="form__message dark:text-slate-300" tabindex="-1" autofocus>
         <svg aria-hidden="true" focusable="false" viewBox="0 0 13 13">
           <path d="M6.5 12.35C9.73087 12.35 12.35 9.73086 12.35 6.5C12.35 3.26913 9.73087 0.65 6.5 0.65C3.26913 0.65 0.65 3.26913 0.65 6.5C0.65 9.73086 3.26913 12.35 6.5 12.35Z" fill="#428445" stroke="white" stroke-width="0.7"/>
           <path d="M5.53271 8.66357L9.25213 4.68197" stroke="white"/>
@@ -95,10 +96,11 @@
         {{ form.errors | default_errors }}
       {%- endif -%}
 
-      <div class="field">        
+      <div class="field">
         <input
           type="email"
           name="customer[email]"
+		  class="dark:text-slate-300 dark:bg-transparent"
           id="CustomerEmail"
           autocomplete="email"
           autocorrect="off"
@@ -114,10 +116,11 @@
       </div>
 
       {%- if form.password_needed -%}
-        <div class="field">          
+        <div class="field">
           <input
             type="password"
             value=""
+			class="dark:text-slate-300 dark:bg-transparent"
             name="customer[password]"
             id="CustomerPassword"
             autocomplete="current-password"
@@ -131,7 +134,7 @@
           </label>
         </div>
 
-        <a href="#recover">
+        <a href="#recover" class="dark:text-slate-500">
           {{ 'customer.login_page.forgot_password' | t }}
         </a>
       {%- endif -%}
@@ -140,13 +143,13 @@
         {{ 'customer.login_page.sign_in' | t }}
       </button>
 
-      <a href="{{ routes.account_register_url }}">
+      <a href="{{ routes.account_register_url }}" class="dark:text-slate-500">
         {{ 'customer.login_page.create_account' | t }}
       </a>
-      
+
     {%- endform -%}
   </div>
-  
+
   {%- if shop.checkout.guest_login -%}
     <div>
       <hr>

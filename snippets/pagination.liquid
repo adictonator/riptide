@@ -20,7 +20,7 @@
       <ul class="pagination__list list-unstyled" role="list">
       {%- if paginate.previous -%}
         <li>
-          <a href="{{ paginate.previous.url }}{{ anchor }}" class="pagination__item pagination__item--next pagination__item-arrow link motion-reduce" aria-label="{{ 'general.pagination.previous' | t }}">
+          <a href="{{ paginate.previous.url }}{{ anchor }}" class="pagination__item pagination__item--next pagination__item-arrow link motion-reduce" aria-label="{{ 'general.pagination.previous' | t }} dark:text-slate-300">
             {% render 'icon-caret' %}
           </a>
         </li>
@@ -29,12 +29,12 @@
       {%- for part in paginate.parts -%}
         <li>
           {%- if part.is_link -%}
-            <a href="{{ part.url }}{{ anchor }}" class="pagination__item link" aria-label="{{ 'general.pagination.page' | t: number: part.title }}">{{ part.title }}</a>
+            <a href="{{ part.url }}{{ anchor }}" class="pagination__item link dark:text-slate-300" aria-label="{{ 'general.pagination.page' | t: number: part.title }}">{{ part.title }}</a>
           {%- else -%}
             {%- if part.title == paginate.current_page -%}
-              <a role="link" aria-disabled="true" class="pagination__item pagination__item--current light" aria-current="page" aria-label="{{ 'general.pagination.page' | t: number: part.title }}">{{ part.title }}</a>
+              <a role="link" aria-disabled="true" class="pagination__item pagination__item--current light dark:text-slate-300" aria-current="page" aria-label="{{ 'general.pagination.page' | t: number: part.title }}">{{ part.title }}</a>
             {%- else -%}
-              <span class="pagination__item">{{ part.title }}</span>
+              <span class="pagination__item dark:text-slate-300">{{ part.title }}</span>
             {%- endif -%}
           {%- endif -%}
         </li>
@@ -42,7 +42,7 @@
 
       {%- if paginate.next -%}
         <li>
-          <a href="{{ paginate.next.url }}{{ anchor }}" class="pagination__item pagination__item--prev pagination__item-arrow link motion-reduce" aria-label="{{ 'general.pagination.next' | t }}" >
+          <a href="{{ paginate.next.url }}{{ anchor }}" class="pagination__item pagination__item--prev pagination__item-arrow link motion-reduce dark:text-slate-300" aria-label="{{ 'general.pagination.next' | t }}" >
             {%- render 'icon-caret' -%}
           </a>
         </li>

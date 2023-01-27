@@ -72,22 +72,22 @@
               {% render block %}
             {%- when 'text' -%}
               <p
-                class="product__text{% if block.settings.text_style == 'uppercase' %} caption-with-letter-spacing{% elsif block.settings.text_style == 'subtitle' %} subtitle{% endif %}"
+                class="product__text{% if block.settings.text_style == 'uppercase' %} caption-with-letter-spacing{% elsif block.settings.text_style == 'subtitle' %} subtitle{% endif %} dark:text-slate-500"
                 {{ block.shopify_attributes }}
               >
                 {{- block.settings.text -}}
               </p>
             {%- when 'title' -%}
               <div class="product__title" {{ block.shopify_attributes }}>
-                <h1>{{ product.title | escape }}</h1>
-                <a href="{{ product.url }}" class="product__title">
-                  <h2 class="h1">
+                <h1 class="dark:text-slate-300">{{ product.title | escape }}</h1>
+                <a href="{{ product.url }}" class="product__title dark:text-slate-300">
+                  <h2 class="h1 dark:text-slate-300">
                     {{ product.title | escape }}
                   </h2>
                 </a>
               </div>
             {%- when 'price' -%}
-              <div class="no-js-hidden" id="price-{{ section.id }}" role="status" {{ block.shopify_attributes }}>
+              <div class="no-js-hidden dark:text-slate-300" id="price-{{ section.id }}" role="status" {{ block.shopify_attributes }}>
                 {%- render 'price',
                   product: product,
                   use_variant: true,
@@ -96,7 +96,7 @@
                 -%}
               </div>
               {%- if shop.taxes_included or shop.shipping_policy.body != blank -%}
-                <div class="product__tax caption rte">
+                <div class="product__tax caption rte dark:text-slate-300">
                   {%- if shop.taxes_included -%}
                     {{ 'products.product.include_taxes' | t }}
                   {%- endif -%}
@@ -161,13 +161,13 @@
               </p>
             {%- when 'description' -%}
               {%- if product.description != blank -%}
-                <div class="product__description rte quick-add-hidden" {{ block.shopify_attributes }}>
+                <div class="product__description rte quick-add-hidden dark:text-slate-300" {{ block.shopify_attributes }}>
                   {{ product.description }}
                 </div>
               {%- endif -%}
             {%- when 'sku' -%}
               <p
-                class="product__sku no-js-hidden{% if block.settings.text_style == 'uppercase' %} caption-with-letter-spacing{% elsif block.settings.text_style == 'subtitle' %} subtitle{% endif %}{% if product.selected_or_first_available_variant.sku.size == 0 %} visibility-hidden{% endif %}"
+                class="product__sku no-js-hidden{% if block.settings.text_style == 'uppercase' %} caption-with-letter-spacing{% elsif block.settings.text_style == 'subtitle' %} subtitle{% endif %}{% if product.selected_or_first_available_variant.sku.size == 0 %} visibility-hidden{% endif %} dark:text-slate-300"
                 id="Sku-{{ section.id }}"
                 role="status"
                 {{ block.shopify_attributes }}
@@ -177,12 +177,12 @@
             {%- when 'custom_liquid' -%}
               {{ block.settings.custom_liquid }}
             {%- when 'collapsible_tab' -%}
-              <div class="product__accordion accordion quick-add-hidden" {{ block.shopify_attributes }}>
+              <div class="product__accordion accordion quick-add-hidden dark:border-slate-600" {{ block.shopify_attributes }}>
                 <details id="Details-{{ block.id }}-{{ section.id }}">
                   <summary>
                     <div class="summary__title">
                       {% render 'icon-accordion', icon: block.settings.icon %}
-                      <h2 class="h4 accordion__title">
+                      <h2 class="h4 accordion__title dark:text-slate-300">
                         {{ block.settings.heading | default: block.settings.page.title }}
                       </h2>
                     </div>
@@ -199,11 +199,11 @@
                 class="product-form__input product-form__quantity{% if settings.inputs_shadow_vertical_offset != 0 and settings.inputs_shadow_vertical_offset < 0 %} product-form__quantity-top{% endif %}"
                 {{ block.shopify_attributes }}
               >
-                <label class="form__label" for="Quantity-{{ section.id }}">
+                <label class="form__label dark:text-slate-500" for="Quantity-{{ section.id }}">
                   {{ 'products.product.quantity.label' | t }}
                 </label>
 
-                <quantity-input class="quantity">
+                <quantity-input class="quantity dark:bg-slate-700 dark:text-slate-300 dark:after:[box-shadow:0_0_0_1px_#cbd5e1]">
                   <button class="quantity__button no-js-hidden" name="minus" type="button">
                     <span class="visually-hidden">
                       {{- 'products.product.quantity.decrease' | t: product: product.title | escape -}}
@@ -251,12 +251,12 @@
                 class="share-button quick-add-hidden"
                 {{ block.shopify_attributes }}
               >
-                <button class="share-button__button hidden">
+                <button class="share-button__button hidden dark:text-slate-300">
                   {% render 'icon-share' %}
                   {{ block.settings.share_label | escape }}
                 </button>
                 <details id="Details-{{ block.id }}-{{ section.id }}">
-                  <summary class="share-button__button">
+                  <summary class="share-button__button dark:text-slate-300">
                     {% render 'icon-share' %}
                     {{ block.settings.share_label | escape }}
                   </summary>
@@ -299,7 +299,7 @@
                   >
                     {%- for option in product.options_with_values -%}
                       <fieldset class="js product-form__input">
-                        <legend class="form__label">{{ option.name }}</legend>
+                        <legend class="form__label dark:text-slate-500">{{ option.name }}</legend>
                         {% render 'product-variant-options',
                           product: product,
                           option: option,
@@ -321,7 +321,7 @@
                   >
                     {%- for option in product.options_with_values -%}
                       <div class="product-form__input product-form__input--dropdown">
-                        <label class="form__label" for="Option-{{ section.id }}-{{ forloop.index0 }}">
+                        <label class="form__label dark:text-slate-500" for="Option-{{ section.id }}-{{ forloop.index0 }}">
                           {{ option.name }}
                         </label>
                         <div class="select">
@@ -351,7 +351,7 @@
 
               <noscript class="product-form__noscript-wrapper-{{ section.id }}">
                 <div class="product-form__input{% if product.has_only_default_variant %} hidden{% endif %}">
-                  <label class="form__label" for="Variants-{{ section.id }}">
+                  <label class="form__label dark:text-slate-500" for="Variants-{{ section.id }}">
                     {{- 'products.product.product_variants' | t -}}
                   </label>
                   <div class="select">
@@ -416,7 +416,7 @@
                       <button
                         type="submit"
                         name="add"
-                        class="product-form__submit button button--full-width {% if block.settings.show_dynamic_checkout %}button--secondary{% else %}button--primary{% endif %}"
+                        class="product-form__submit button button--full-width {% if block.settings.show_dynamic_checkout %}button--secondary{% else %}button--primary{% endif %} dark:text-slate-300 dark:after:[box-shadow:0_0_0_1px_#cbd5e1] dark:hover:after:[box-shadow:0_0_0_2px_#cbd5e1]"
                         {% if product.selected_or_first_available_variant.available == false %}
                           disabled
                         {% endif %}
@@ -514,7 +514,7 @@
                 </p>
               {%- endif -%}
             {%- when 'complementary' -%}
-              <product-recommendations class="complementary-products quick-add-hidden no-js-hidden{% if block.settings.make_collapsible_row %} is-accordion{% endif %}" data-url="{{ routes.product_recommendations_url }}?section_id={{ section.id }}&product_id={{ product.id }}&limit={{ block.settings.product_list_limit }}&intent=complementary">
+              <product-recommendations class="complementary-products quick-add-hidden no-js-hidden{% if block.settings.make_collapsible_row %} is-accordion{% endif %} dark:text-slate-300" data-url="{{ routes.product_recommendations_url }}?section_id={{ section.id }}&product_id={{ product.id }}&limit={{ block.settings.product_list_limit }}&intent=complementary">
                 {%- if recommendations.performed and recommendations.products_count > 0 -%}
                   <aside aria-label="{{ 'accessibility.complementary_products' | t }}" {{ block.shopify_attributes }}{% if block.settings.make_collapsible_row %} class="product__accordion accordion"{% endif %}>
                     <div class="complementary-products__container">
@@ -522,12 +522,12 @@
                         <details id="Details-{{ block.id }}-{{ section.id }}" open>
                           <summary>
                       {%- endif %}
-                      <div class="summary__title">
+                      <div class="summary__title dark:text-slate-300">
                         {%- if block.settings.make_collapsible_row -%}
                           {% render 'icon-accordion', icon: block.settings.icon %}
-                          <h2 class="h4 accordion__title">{{ block.settings.block_heading }}</h2>
+                          <h2 class="h4 accordion__title dark:text-slate-300">{{ block.settings.block_heading }}</h2>
                         {%- else -%}
-                          <h2 class="h3 accordion__title">{{ block.settings.block_heading }}</h2>
+                          <h2 class="h3 accordion__title dark:text-slate-300">{{ block.settings.block_heading }}</h2>
                         {%- endif -%}
                       </div>
                       {%- if block.settings.make_collapsible_row -%}

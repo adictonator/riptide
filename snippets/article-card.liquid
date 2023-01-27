@@ -58,8 +58,8 @@
             </div>
           </div>
         {%- endif -%}
-        <div class="card__content">        
-          <div class="card__information">
+        <div class="card__content">
+          <div class="card__information dark:text-slate-300">
             <h3 class="card__heading{% if show_excerpt %} h2{% endif %}">
               <a href="{{ article.url }}" class="full-unstyled-link">
                 {{ article.title | truncate: 50 | escape }}
@@ -98,7 +98,7 @@
         </div>
       </div>
       <div class="card__content">
-        <div class="card__information">
+        <div class="card__information dark:text-slate-300">
           <h3 class="card__heading{% if show_excerpt %} h2{% endif %}">
             <a href="{{ article.url }}" class="full-unstyled-link">
               {{ article.title | truncate: 50 | escape }}
@@ -133,7 +133,7 @@
           <div class="card__badge {{ settings.badge_position }}">
             <span class="badge color-background-1">{{ 'blogs.article.blog' | t }}</span>
           </div>
-        {%- endif -%}  
+        {%- endif -%}
       </div>
     </div>
   </div>
