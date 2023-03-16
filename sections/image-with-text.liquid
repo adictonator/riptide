@@ -37,7 +37,12 @@
         {%- for block in section.blocks -%}
           {% case block.type %}
             {%- when 'heading' -%}
-              <h2 class="image-with-text__heading {{ block.settings.heading_size }} dark:text-slate-300" {{ block.shopify_attributes }}>
+				{% assign header_font = block.settings.header_font %}
+				<style>
+					{{ header_font | font_face }}
+				</style>
+
+              <h2 class="image-with-text__heading {{ block.settings.heading_size }} dark:text-slate-300" {{ block.shopify_attributes }} style="font-family: {{ header_font.family | replace: '"', "'" }};">
                 {{ block.settings.heading | escape }}
               </h2>
             {%- when 'caption' -%}
@@ -289,7 +294,13 @@
           ],
           "default": "h1",
           "label": "t:sections.all.heading_size.label"
-        }
+        },
+		{
+			"type": "font_picker",
+			"id": "header_font",
+			"label": "Font",
+			"default": "work_sans_n6"
+		}
       ]
     },
     {

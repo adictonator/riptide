@@ -45,11 +45,16 @@
   endif
 -%}
 
+{% assign header_font = section.settings.header_font %}
+<style>
+	{{ header_font | font_face }}
+</style>
+
 <div class="color-{{ section.settings.color_scheme }} isolate gradient dark:bg-slate-700 dark:text-slate-300">
   <div class="collection section-{{ section.id }}-padding{% if section.settings.full_width %} collection--full-width{% endif %}">
       <div class="collection__title title-wrapper title-wrapper--no-top-margin page-width{% if show_mobile_slider %} title-wrapper--self-padded-tablet-down{% endif %}{% if show_desktop_slider %} collection__title--desktop-slider{% endif %}">
         {%- if section.settings.title != blank -%}
-          <h2 class="title {{ section.settings.heading_size }} dark:text-slate-300" style="text-align: {{ section.settings.heading_pos }}; {% if section.settings.custom_color %} color: {{ section.settings.heading_color }} {% endif %}">{{ section.settings.title | escape }}</h2>
+          <h2 class="title {{ section.settings.heading_size }} dark:text-slate-300" style="text-align: {{ section.settings.heading_pos }}; font-family: {{ header_font.family | replace: '"', "'" }}; {% if section.settings.custom_color %} color: {{ section.settings.heading_color }} {% endif %}">{{ section.settings.title | escape }}</h2>
         {%- endif -%}
         {%- if section.settings.description != blank or section.settings.show_description and section.settings.collection.description != empty -%}
           <div class="collection__description {{ section.settings.description_style }}">{%- if section.settings.show_description -%}{{ section.settings.collection.description }}{%- else -%}{{ section.settings.description }}{% endif %}</div>
@@ -67,13 +72,14 @@
               show_vendor: section.settings.show_vendor,
               show_rating: section.settings.show_rating,
               show_quick_add: section.settings.enable_quick_add,
-              section_id: section.id
+              section_id: section.id,
+			  text_pos: section.settings.heading_pos
             %}
           </li>
         {%- else -%}
           {%- for i in (1..4) -%}
             <li class="grid__item">
-              {% render 'card-product', show_vendor: section.settings.show_vendor %}
+              {% render 'card-product', show_vendor: section.settings.show_vendor, text_pos: section.settings.heading_pos %}
             </li>
           {%- endfor -%}
         {%- endfor -%}
@@ -157,6 +163,12 @@
       "default": "left",
       "label": "Heading alignment"
     },
+	{
+		"type": "font_picker",
+		"id": "header_font",
+		"label": "Font",
+		"default": "work_sans_n6"
+	},
 	{
 		"type": "header",
 		"content": "Heading Style"

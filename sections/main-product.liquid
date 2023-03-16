@@ -689,7 +689,10 @@
                   </li>
                 {%- endunless -%}
               </ul>
-          {%- endcase -%}
+
+			{% when "image" %}
+				<img src="{{ block.settings.prod_img | img_url: '1000x' }} }}" alt="image" loading="lazy">
+			{%- endcase -%}
         {%- endfor -%}
         <a href="{{ product.url }}" class="link product__view-details animate-arrow">
           {{ 'products.product.view_full_details' | t }}
@@ -2148,7 +2151,18 @@
           "info": "t:sections.main-product.blocks.icon_with_text.settings.heading.info"
         }
       ]
-    }
+    },
+	{
+		"type": "image",
+		"name": "Image",
+		"settings": [
+			{
+				"type": "image_picker",
+				"id": "prod_img",
+				"label": "Add a custom image."
+			}
+		]
+	}
   ],
   "settings": [
     {

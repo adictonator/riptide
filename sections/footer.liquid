@@ -98,7 +98,7 @@
                                         </ul>
                                     {%- endif -%}
                                 {%- when 'image' -%}
-                                    <div class="footer-block__details-content footer-block-image {{ block.settings.alignment }}">
+                                    <div class="footer-block__details-content footer-block-image {{ block.settings.alignment }} flex">
                                         {%- if block.settings.image != blank -%}
                                             {%- assign image_size_2x = block.settings.image_width | times: 2 | at_most: 5760 -%}
                                             <img
@@ -567,19 +567,19 @@
                         "label": "Image alignment on large screen",
                         "options": [
                             {
-                                "value": "",
+                                "value": "justify-start",
                                 "label": "Left"
                             },
                             {
-                                "value": "center",
+                                "value": "justify-center",
                                 "label": "Center"
                             },
                             {
-                                "value": "right",
+                                "value": "justify-end",
                                 "label": "Right"
                             }
                         ],
-                        "default": "center"
+                        "default": "justify-center"
                     }
                 ]
             }

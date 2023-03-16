@@ -3,6 +3,14 @@
         {%- for block in section.blocks -%}
             <div class="w-full text-center">
                 {%- if block.settings.quote != blank -%}
+					<div class="inline-flex gap-x-1 ml-10">
+						{% for i in (1..block.settings.stars) %}
+							<span>
+								{% render 'icon-star' %}
+							</span>
+						{% endfor %}
+					</div>
+
                     <div class="text-2xl">
                         {{ block.settings.quote }}
                     </div>
@@ -17,6 +25,12 @@
                         src="{{ block.settings.logo | image_url: '300x' }}"
                         width="{{ block.settings.logo.width }}">
                 {%- endif -%}
+
+				{%- if block.settings.name != blank  -%}
+					<footer class="text-center max-w-sm mx-auto">
+						<span class="italic">&mdash; {{ block.settings.name }}</span>
+					</footer>
+				{% endif %}
             </div>
         {%- endfor -%}
     </div>
@@ -94,7 +108,24 @@
                         "label": "Quote",
                         "default": "<p>Share what your customers are saying about your products, your company...</p>",
                         "info": "For best results, keep the word count consistent in each quote."
-                    }
+                    },
+                    {
+                        "type": "text",
+                        "id": "name",
+                        "label": "Name",
+                        "default": "John"
+                    },
+					{
+						"type": "range",
+						"id": "stars",
+						"label": "Star Rating",
+						"min": 1,
+						"max": 5,
+						"default": 4,
+						"step": 1,
+						"info": "Drag slider to show rating from 1 to 5."
+					}
+
                 ]
             }
         ],

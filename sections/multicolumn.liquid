@@ -59,6 +59,11 @@
                         {%- assign empty_column = ' multicolumn-list__item--empty' -%}
                     {%- endif -%}
 
+					{% assign header_font = block.settings.header_font %}
+					<style>
+						{{ header_font | font_face }}
+					</style>
+
                     <li
                         class="multicolumn-list__item grid__item{% if section.settings.swipe_on_mobile %} slider__slide{% endif %}{% if section.settings.column_alignment == "center" %} center{% endif %}{{ empty_column }}"
                         id="Slide-{{ section.id }}-{{ forloop.index }}"
@@ -88,7 +93,7 @@
                             {%- endif -%}
                             <div class='multicolumn-card__info dark:bg-slate-600 dark:text-slate-300'>
                                 {%- if block.settings.title != blank -%}
-                                    <h3 class="dark:text-slate-400">{{ block.settings.title | escape }}</h3>
+                                    <h3 class="dark:text-slate-400" style="font-family: {{ header_font.family | replace: '"', "'" }};">{{ block.settings.title | escape }}</h3>
                                 {%- endif -%}
                                 {%- if block.settings.text != blank -%}
                                     <div class='rte'>{{ block.settings.text }}</div>
@@ -363,6 +368,12 @@
                         "default": "Column",
                         "label": "t:sections.multicolumn.blocks.column.settings.title.label"
                     },
+					{
+						"type": "font_picker",
+						"id": "header_font",
+						"label": "Font",
+						"default": "work_sans_n6"
+					},
                     {
                         "type": "richtext",
                         "id": "text",

@@ -6,6 +6,9 @@
         {{ section.settings.image.height }}
     {%- endif -%}
 {%- endcapture -%}
+
+{% assign header_font = section.settings.header_font %}
+
 <div class="flex flex-col items-center justify-center min-h-[600px]" {%- if section.settings.image -%}style="background: url({{ section.settings.image | image_url }}) center; background-size: cover;"{%- endif -%}>
     <div class="w-full absolute inset-0 h-full">
         <div class="before:absolute before:inset-0 before:w-full before:h-full before:bg-[color:var(--overlay)] block" {%- if section.settings.image -%}data-bgset="{{ section.settings.image | image_url: mobile_size, crop: 'center' }} 750w, {{ section.settings.image | img_url: '1000x' }} 1000w, {{ section.settings.image | img_url: '1500x' }} 1500w"{%- endif -%}>
@@ -31,7 +34,7 @@
                 {%- endif -%}
 
                 {%- if section.settings.title != blank -%}
-                    <h2 class="text-5xl text-[color:var(--coco)] font-medium tracking-widest uppercase">{{ section.settings.title | escape }}</h2>
+                    <h2 class="text-5xl text-[color:var(--coco)] font-medium tracking-widest uppercase" style="font-family: {{ header_font.family | replace: '"', "'" }};">{{ section.settings.title | escape }}</h2>
                 {%- endif -%}
 
                 {%- if section.settings.content != blank -%}
@@ -52,6 +55,7 @@
         --overlay: {{ section.settings.overlay_color | color_modify: 'alpha', overlay_opacity }}
         ;
     }
+	{{ header_font | font_face }}
 {%- endstyle -%}
 
 {%- schema -%}
@@ -99,6 +103,12 @@
                 "label": "Heading",
                 "default": "Tell your story"
             },
+			{
+				"type": "font_picker",
+				"id": "header_font",
+				"label": "Font",
+				"default": "work_sans_n6"
+			},
             {
                 "type": "richtext",
                 "id": "content",
