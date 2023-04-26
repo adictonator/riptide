@@ -675,13 +675,6 @@ endif
         {%- endif -%}
 
         <div class='header__icons'>
-			{% if section.settings.dark_mode %}
-				<label for="theme" class="flex mr-5 items-center cursor-pointer relative" title="Switch theme">
-					<input type="checkbox" id="theme" class="sr-only">
-					<div class="toggle-bg bg-gray-200 border-2 border-gray-200 h-10 w-20 rounded-full">&nbsp;</div>
-				</label>
-			{% endif %}
-
 			{% if section.settings.enable_search %}
             <details-modal class='header__search'>
                 <details>
@@ -954,20 +947,6 @@ endif
     }
 
     customElements.define ('sticky-header', StickyHeader);
-
-	const switcher = document.getElementById('theme')
-	switcher.addEventListener('change', ({ target }) => {
-		let type = localStorage.theme ? localStorage.theme : 'light'
-		if (target.checked) {
-			document.documentElement.classList.add('dark')
-			type = 'dark'
-		} else {
-			document.documentElement.classList.remove('dark')
-			type = 'light'
-		}
-
-		localStorage.theme = type
-	})
 {% endjavascript %}
 
 <script type='application/ld+json'>
@@ -1130,17 +1109,6 @@ endif
                 "default": true,
                 "label": "Enable Search On Site",
                 "info": "Shows search icon on the header."
-            },
-            {
-                "type": "header",
-                "content": "Dark Mode"
-            },
-			{
-                "type": "checkbox",
-                "id": "dark_mode",
-                "default": false,
-                "label": "Enable Dark Mode Functionality",
-                "info": "Shows theme switcher icon on the header."
             },
             {
                 "type": "header",

@@ -59,7 +59,7 @@
                   </button>
                 </noscript>
 
-                <button type="submit" id="checkout" class="cart__checkout-button button dark:after:[box-shadow:0_0_0_1px_#cbd5e1] text-black dark:text-slate-300 dark:hover:after:[box-shadow:0_0_0_2px_#cbd5e1]" name="checkout"{% if cart == empty %} disabled{% endif %} form="cart">
+                <button type="submit" id="checkout" class="cart__checkout-button button button--secondary" name="checkout"{% if cart == empty %} disabled{% endif %} form="cart" style="background-color: {{ block.settings.bg_color }}; color: {{ block.settings.text_color }}">
                   {{ 'sections.cart.checkout' | t }}
                 </button>
               </div>
@@ -112,7 +112,21 @@
     {
       "type": "buttons",
       "name": "t:sections.main-cart-footer.blocks.buttons.name",
-      "limit": 1
+      "limit": 1,
+	  "settings": [
+		{
+			"type": "color",
+			"id": "text_color",
+			"label": "Text Color",
+			"default": "#000"
+		},
+		{
+			"type": "color",
+			"id": "bg_color",
+			"label": "Button Background",
+			"default": "#fff"
+		}
+	  ]
     },
     {
       "type": "@app"

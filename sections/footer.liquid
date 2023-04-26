@@ -60,7 +60,7 @@
     }
 {%- endstyle -%}
 
-<footer class="footer color-{{ section.settings.color_scheme }} gradient section-{{ section.id }}-padding dark:bg-slate-800 dark:text-slate-300">
+<footer class="footer color-{{ section.settings.color_scheme }} gradient section-{{ section.id }}-padding dark:bg-slate-800 dark:text-slate-300" style="background-color: {{ section.settings.footer_bg_color }}">
     {%- if section.blocks.size > 0 or section.settings.newsletter_enable or section.settings.show_social -%}
         <div class="footer__content-top page-width">
             {%- if section.blocks.size > 0 -%}
@@ -77,12 +77,12 @@
                     {%- for block in section.blocks -%}
                         <div class="footer-block grid__item{% if block.type == 'link_list' %} footer-block--menu{% endif %}" {{ block.shopify_attributes }}>
                             {%- if block.settings.heading != blank -%}
-                                <h2 class="footer-block__heading dark:text-slate-300">{{- block.settings.heading | escape -}}</h2>
+                                <h2 class="footer-block__heading" style="color: {{ section.settings.heading_color }}">{{- block.settings.heading | escape -}}</h2>
                             {%- endif -%}
 
                             {%- case block.type -%}
                                 {%- when 'text' -%}
-                                    <div class="footer-block__details-content rte dark:text-slate-300">
+                                    <div class="footer-block__details-content rte" style="color: {{ section.settings.text_color }}">
                                         {{ block.settings.subtext }}
                                     </div>
                                 {%- when 'link_list' -%}
@@ -90,7 +90,7 @@
                                         <ul class="footer-block__details-content list-unstyled">
                                             {%- for link in block.settings.menu.links -%}
                                                 <li>
-                                                    <a class="link link--text list-menu__item list-menu__item--link{% if link.active %} list-menu__item--active{% endif %} dark:!text-slate-300" href="{{ link.url }}">
+                                                    <a class="link link--text list-menu__item list-menu__item--link{% if link.active %} list-menu__item--active{% endif %}" style="color: {{ section.settings.text_color }}" href="{{ link.url }}">
                                                         {{ link.title }}
                                                     </a>
                                                 </li>
@@ -585,34 +585,24 @@
             }
         ],
         "settings": [
-            {
-                "type": "select",
-                "id": "color_scheme",
-                "options": [
-                    {
-                        "value": "accent-1",
-                        "label": "t:sections.all.colors.accent_1.label"
-                    },
-                    {
-                        "value": "accent-2",
-                        "label": "t:sections.all.colors.accent_2.label"
-                    },
-                    {
-                        "value": "background-1",
-                        "label": "t:sections.all.colors.background_1.label"
-                    },
-                    {
-                        "value": "background-2",
-                        "label": "t:sections.all.colors.background_2.label"
-                    },
-                    {
-                        "value": "inverse",
-                        "label": "t:sections.all.colors.inverse.label"
-                    }
-                ],
-                "default": "background-1",
-                "label": "t:sections.all.colors.label"
-            },
+			{
+				"type": "color",
+				"id": "footer_bg_color",
+				"label": "Footer Background",
+				"default": "#fff"
+			},
+			{
+				"type": "color",
+				"id": "heading_color",
+				"label": "Heading Color",
+				"default": "#000000"
+			},
+			{
+				"type": "color",
+				"id": "text_color",
+				"label": "Text Color",
+				"default": "#000000"
+			},
             {
                 "type": "header",
                 "content": "t:sections.footer.settings.header__1.content",

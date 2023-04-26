@@ -1304,6 +1304,7 @@ button.shopify-payment-button__button--unbranded,
 	); /* reduce radius edge artifacts */
 	--border-opacity: calc(1 - var(--buttons-border-opacity));
 	border-radius: var(--buttons-radius-outset);
+	border-radius: var(--buttons-radius);
 	position: relative;
 }
 
