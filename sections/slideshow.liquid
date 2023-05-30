@@ -165,7 +165,7 @@
                                     href="{{ block.settings.link }}"{%- else -%}role="link"aria-disabled="true"{%- endif -%}
                             {%- endcapture -%}
                             <div class="banner__buttons">
-                                <a class="button {% if block.settings.button_style_secondary %}button--secondary{% else %}button--primary{% endif %} " {{ link_props }}>{{ block.settings.button_label | escape }}</a>
+                                <a class="button {% if block.settings.button_style_secondary %}button--secondary{% else %}button--primary{% endif %}" {{ link_props }} {% if block.settings.button_style_custom %} style="background-color:{{ block.settings.button_custom_bg }};color:{{ block.settings.button_custom_text }};" {% endif %}>{{ block.settings.button_label | escape }}</a>
                             </div>
                         {%- endif -%}
                     </div>
@@ -434,6 +434,24 @@
                         "id": "button_style_secondary",
                         "label": "t:sections.slideshow.blocks.slide.settings.secondary_style.label",
                         "default": false
+                    },
+                    {
+                        "type": "checkbox",
+                        "id": "button_style_custom",
+                        "label": "Use custom button background",
+                        "default": false
+                    },
+                    {
+                        "type": "color",
+                        "id": "button_custom_bg",
+                        "label": "Background Color",
+                        "default": "#BADA55"
+                    },
+                    {
+                        "type": "color",
+                        "id": "button_custom_text",
+                        "label": "Text Color",
+                        "default": "#FFFFFF"
                     },
                     {
                         "type": "select",

@@ -91,15 +91,17 @@
                             {%- endif -%}
                             <div class='multicolumn-card__info dark:bg-slate-600 dark:text-slate-300'>
                                 {%- if block.settings.title != blank -%}
-                                    <h3 class="dark:text-slate-400" style="font-family: {{ header_font.family | replace: '"', "'" }};">{{ block.settings.title | escape }}</h3>
+                                    <h3 class="dark:text-slate-400" style="font-family: {{ header_font.family | replace: '"', "'" }};{% if block.settings.text_size != '' %}font-size: {{ block.settings.text_size | append: 'px' }};{% endif %}">{{ block.settings.title | escape }}</h3>
                                 {%- endif -%}
                                 {%- if block.settings.text != blank -%}
-                                    <div class='rte'>{{ block.settings.text }}</div>
+                                    <div class='rte' {% if block.settings.text_size_text != '' %}style="font-size: {{ block.settings.text_size_text | append: 'px' }};{% endif %}">{{ block.settings.text }}</div>
                                 {%- endif -%}
                                 {%- if block.settings.link_label != blank -%}
                                     <a
                                         class='link animate-arrow'
-                                        {%- if block.settings.link == blank -%}role='link'aria-disabled='true'{%- else -%}href="{{ block.settings.link }}"{%- endif -%}>{{ block.settings.link_label | escape }}<span class='icon-wrap'>&nbsp;{%- render 'icon-arrow' -%}</span>
+                                        {%- if block.settings.link == blank -%}role='link'aria-disabled='true'{%- else -%}href="{{ block.settings.link }}"{%- endif -%}><button class="button button--primary">
+											{{ block.settings.link_label | escape }}&nbsp;{% render 'icon-arrow' %}
+										</button>
                                     </a>
                                 {%- endif -%}
                             </div>
@@ -372,12 +374,24 @@
 						"label": "Font",
 						"default": "work_sans_n6"
 					},
+					{
+						"type": "text",
+						"id": "text_size",
+						"default": "12",
+						"label": "Text size in pixels (px). Leave blank to use theme settings."
+					},
                     {
                         "type": "richtext",
                         "id": "text",
                         "default": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
                         "label": "t:sections.multicolumn.blocks.column.settings.text.label"
                     },
+					{
+						"type": "text",
+						"id": "text_size_text",
+						"default": "12",
+						"label": "Text size in pixels (px). Leave blank to use theme settings."
+					},
                     {
                         "type": "text",
                         "id": "link_label",

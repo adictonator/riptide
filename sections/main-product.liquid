@@ -420,6 +420,10 @@
                         {% if product.selected_or_first_available_variant.available == false %}
                           disabled
                         {% endif %}
+
+						{% if section.settings.button_style_custom %}
+							style="background-color: {{ section.settings.button_custom_bg }}; color: {{ section.settings.button_custom_text }}"
+						{% endif %}
                       >
                         <span>
                           {%- if product.selected_or_first_available_variant.available -%}
@@ -2291,6 +2295,29 @@
       "default": false,
       "label": "t:sections.main-product.settings.enable_video_looping.label"
     },
+	{
+		"type": "header",
+		"content": "Buttons",
+		"info": "Adjust button's appearance"
+    },
+	{
+		"type": "checkbox",
+		"id": "button_style_custom",
+		"label": "Use custom button background",
+		"default": false
+	},
+	{
+		"type": "color",
+		"id": "button_custom_bg",
+		"label": "Add to Cart background Color",
+		"default": "#BADA55"
+	},
+	{
+		"type": "color",
+		"id": "button_custom_text",
+		"label": "Add to Cart text Color",
+		"default": "#FFFFFF"
+	},
     {
       "type": "header",
       "content": "t:sections.all.padding.section_padding_heading"

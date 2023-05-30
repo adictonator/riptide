@@ -11,7 +11,7 @@
 						{% endfor %}
 					</div>
 
-                    <div class="text-2xl">
+                    <div class="text-2xl" {% if block.settings.text_size != '' %}style="font-size: {{ block.settings.text_size | append: 'px' }};{% endif %}">
                         {{ block.settings.quote }}
                     </div>
                 {%- endif -%}
@@ -109,6 +109,12 @@
                         "default": "<p>Share what your customers are saying about your products, your company...</p>",
                         "info": "For best results, keep the word count consistent in each quote."
                     },
+					{
+						"type": "text",
+						"id": "text_size",
+						"default": "12",
+						"label": "Text size in pixels (px). Leave blank to use theme settings."
+					},
                     {
                         "type": "text",
                         "id": "name",

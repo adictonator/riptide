@@ -105,7 +105,7 @@
           {%- endif -%}
         </media-gallery>
       </div>
-      <div class="product__info-wrapper grid__item dark:bg-slate-700 dark:text-slate-300">
+      <div class="product__info-wrapper grid__item">
         <div id="ProductInfo-{{ section.id }}" class="product__info-container">
           {%- assign product_form_id = 'product-form-' | append: section.id -%}
 
@@ -126,7 +126,7 @@
 					{{ header_font | font_face }}
 				</style>
 
-                <h2 class="product__title {{ block.settings.heading_size }} dark:text-slate-300" {{ block.shopify_attributes }} style="font-family: {{ header_font.family | replace: '"', "'" }};">
+                <h2 class="product__title {{ block.settings.heading_size }}" {{ block.shopify_attributes }} style="font-family: {{ header_font.family | replace: '"', "'" }}; {% if section.settings.text_size != '' %}font-size: {{ section.settings.text_size | append: 'px' }};{% endif %}">
                   {%- if product.title != blank -%}
                     {{ product.title | escape }}
                   {%- else -%}
@@ -367,6 +367,10 @@
                             {% if product.selected_or_first_available_variant.available == false %}
                               disabled
                             {% endif %}
+
+							{% if section.settings.button_style_custom %}
+								style="background-color: {{ section.settings.button_custom_bg }}; color: {{ section.settings.button_custom_text }}"
+							{% endif %}
                           >
                             <span>
                               {%- if product.selected_or_first_available_variant.available -%}
@@ -1533,6 +1537,12 @@
 		"label": "Font",
 		"default": "work_sans_n6"
 	},
+	{
+		"type": "text",
+		"id": "text_size",
+		"default": "12",
+		"label": "Text size in pixels (px). Leave blank to use theme settings."
+	},
     {
       "type": "select",
       "id": "color_scheme",
@@ -1567,6 +1577,29 @@
       "default": false,
       "label": "t:sections.featured-product.settings.secondary_background.label"
     },
+	{
+		"type": "header",
+		"content": "Buttons",
+		"info": "Adjust button's appearance"
+    },
+	{
+		"type": "checkbox",
+		"id": "button_style_custom",
+		"label": "Use custom button background",
+		"default": false
+	},
+	{
+		"type": "color",
+		"id": "button_custom_bg",
+		"label": "Add to Cart background Color",
+		"default": "#BADA55"
+	},
+	{
+		"type": "color",
+		"id": "button_custom_text",
+		"label": "Add to Cart text Color",
+		"default": "#FFFFFF"
+	},
     {
       "type": "header",
       "content": "t:sections.featured-product.settings.header.content",
