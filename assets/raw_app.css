@@ -14,4 +14,14 @@
 	input:checked + .toggle-bg {
 		@apply bg-slate-300 border-slate-300;
 	}
+
+	ul,
+	ol {
+		list-style: auto;
+		margin: 15px 0;
+		padding-left: 40px;
+	}
+	ul {
+		list-style: inherit;
+	}
 }
