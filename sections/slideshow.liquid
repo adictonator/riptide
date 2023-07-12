@@ -139,8 +139,7 @@
                 </div>
 				{% if image_mobile != blank %}
 					{%- assign height = image_mobile.width | divided_by: image_mobile.aspect_ratio | round -%}
-
-                	<div class="slideshow__media banner__media media md:hidden">
+                	<div class="slideshow__media banner__media media md:hidden aspect-[1]">
                         {{ image_mobile | image_url: width: 3840 | image_tag:
                            loading: "lazy"
                            , height: height

@@ -555,7 +555,23 @@ ul,
 }
 
 ul {
-  list-style: inherit;
+  list-style: disc;
+}
+
+blockquote,
+	dl,
+	dd,
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6,
+	hr,
+	figure,
+	p,
+	pre {
+  margin: 10px;
 }
 
 .visible {
@@ -648,6 +664,10 @@ ul {
 
 .aspect-square {
   aspect-ratio: 1 / 1;
+}
+
+.aspect-\[1\] {
+  aspect-ratio: 1;
 }
 
 .h-full {
