@@ -124,7 +124,11 @@
                 id="Slide-{{ section.id }}-{{ forloop.index }}"
                 role="group"
                 tabindex="-1"
-                {{ block.shopify_attributes }}>
+                {{ block.shopify_attributes }}
+				{% if section.settings.show_text_below == false %}
+				style="height: {{ block.settings.image.height }}px"
+				{% endif %}
+			>
                 <div class="hidden md:!block slideshow__media banner__media media{% if block.settings.image == blank %} placeholder{% endif %}">
                     {%- if block.settings.image -%}
                         {%- assign height = block.settings.image.width | divided_by: block.settings.image.aspect_ratio | round -%}
