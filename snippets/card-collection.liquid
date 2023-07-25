@@ -99,13 +99,13 @@
       <div class="card__content">
         <div class="card__information">
           <h3 class="card__heading">
-            <a{% if card_collection == blank %} role="link" aria-disabled="true"{% else %} href="{{ card_collection.url }}"{% endif %} class="full-unstyled-link">
+            <a{% if card_collection == blank %} role="link" aria-disabled="true"{% else %} href="{{ card_collection.url }}"{% endif %} class="full-unstyled-link" style="display: grid; grid-gap: 4px 0">
               {%- if card_collection.title != blank -%}
                 {{- card_collection.title | escape -}}
               {%- else -%}
                 {{ 'onboarding.collection_title' | t }}
               {%- endif -%}
-              {%- if card_collection.featured_image or card_collection.description == blank -%}<button class="button button--primary">
+              {%- if card_collection.featured_image or card_collection.description == blank -%}<button class="button button--primary" style="justify-self: center">
 					View&nbsp;{% render 'icon-arrow' %}
 				</button>{% endif %}
             </a>
