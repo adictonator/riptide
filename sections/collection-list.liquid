@@ -56,7 +56,7 @@
         -%}
         {%- for block in section.blocks -%}
           <li id="Slide-{{ section.id }}-{{ forloop.index }}" class="collection-list__item grid__item{% if show_mobile_slider %} slider__slide{% endif %}{% if block.settings.collection.featured_image == nil %} collection-list__item--no-media{% endif %}" {{ block.shopify_attributes }}>
-            {% render 'card-collection', card_collection: block.settings.collection, card_text_pos: block.settings.heading_pos_card, media_aspect_ratio: section.settings.image_ratio, columns: columns %}
+            {% render 'card-collection', loop: forloop.index, card_collection: block.settings.collection, card_text_pos: block.settings.heading_pos_card, media_aspect_ratio: section.settings.image_ratio, columns: columns, custom_btn_style: block.settings.button_style_custom, btn_bg: block.settings.button_custom_bg, btn_text: block.settings.button_custom_text, btn_border: block.settings.button_custom_border %}
           </li>
         {%- endfor -%}
       </ul>
@@ -286,7 +286,36 @@
 			],
 			"default": "center",
 			"label": "Heading alignment"
-			}
+		},
+		{
+		"type": "header",
+		"content": "Button",
+		"info": "Adjust button's appearance"
+    },
+	{
+		"type": "checkbox",
+		"id": "button_style_custom",
+		"label": "Use custom button background",
+		"default": false
+	},
+	{
+		"type": "color",
+		"id": "button_custom_bg",
+		"label": "Button background colour",
+		"default": "#BADA55"
+	},
+	{
+		"type": "color",
+		"id": "button_custom_text",
+		"label": "Button text colour",
+		"default": "#FFFFFF"
+	},
+	{
+		"type": "color",
+		"id": "button_custom_border",
+		"label": "Button border colour",
+		"default": "#000000"
+	}
       ]
     }
   ],

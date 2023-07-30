@@ -28,7 +28,24 @@
     assign card_color_scheme = settings.collection_card_color_scheme
     assign card_style = settings.collection_card_style
   endif
--%}
+
+  if custom_btn_style
+  assign btn_bg_color = btn_bg
+  assign btn_txt_color = btn_text
+  assign btn_brd_color = btn_border
+  endif
+  -%}
+
+  {% if custom_btn_style %}
+	<style>
+		#Slide-{{ section.id }}-{{ loop }} button.button.button--primary {
+			border: 1px solid {{ btn_brd_color }};
+		}
+		#Slide-{{ section.id }}-{{ loop }} button.button.button--primary:after {
+			box-shadow: 0 0 0 transparent;
+	}
+	</style>
+  {% endif %}
 
 <div class="card-wrapper animate-arrow {% if wrapper_class and wrapper_class != 'none' %}{{ wrapper_class }}{% else %}collection-card-wrapper{% endif %}">
   <div class="card
@@ -78,7 +95,7 @@
               {%- endif -%}
 			  </span>
               {%- if card_collection.description == blank -%}
-				<button class="button button--primary">
+				<button class="button button--primary" style="background-color: {{ btn_bg_color }}; color: {{ btn_txt_color }}; border-color: {{ btn_brd_color }}">
 					View&nbsp;{% render 'icon-arrow' %}
 				</button>
 			{% endif %}
@@ -87,7 +104,7 @@
           {%- if card_collection.description != blank -%}
             <p class="card__caption">
               {{- card_collection.description | strip_html | truncatewords: 12 -}}
-				<button class="button button--primary">
+				<button class="button button--primary" style="justify-self: center; background-color: {{ btn_bg_color }}; color: {{ btn_txt_color }}; border-color: {{ btn_brd_color }}">
 					View&nbsp;{% render 'icon-arrow' %}
 				</button>
             </p>
@@ -105,14 +122,14 @@
               {%- else -%}
                 {{ 'onboarding.collection_title' | t }}
               {%- endif -%}
-              {%- if card_collection.featured_image or card_collection.description == blank -%}<button class="button button--primary" style="justify-self: center">
+              {%- if card_collection.featured_image or card_collection.description == blank -%}<button class="button button--primary" style="justify-self: center; background-color: {{ btn_bg_color }}; color: {{ btn_txt_color }}; border-color: {{ btn_brd_color }}">
 					View&nbsp;{% render 'icon-arrow' %}
 				</button>{% endif %}
             </a>
           </h3>
           {%- if card_collection.featured_image == nil and card_collection.description != blank -%}
             <p class="card__caption">
-              {{- card_collection.description | strip_html | truncatewords: 12 -}}<button class="button button--primary">
+              {{- card_collection.description | strip_html | truncatewords: 12 -}}<button class="button button--primary" style="justify-self: center; background-color: {{ btn_bg_color }}; color: {{ btn_txt_color }}; border-color: {{ btn_brd_color }}">
 					View&nbsp;{% render 'icon-arrow' %}
 				</button>
             </p>

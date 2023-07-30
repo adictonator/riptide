@@ -43,13 +43,19 @@
     }
 </style>
 
+<script>
+	var cS = {{ section.settings.cycle_speed | json }} + '000'
+	var aR = {{ section.settings.autoplay }}
+</script>
+
 {%- javascript -%}
     document.addEventListener ('DOMContentLoaded', () => {
+
         $ ('#_x').slick ({
             slidesToShow: 1,
             slidesToScroll: 1,
-            autoplay: true,
-            autoplaySpeed: 3000,
+            autoplay: aR,
+            autoplaySpeed: cS,
             adaptiveHeight: true,
             arrows: false
         });
