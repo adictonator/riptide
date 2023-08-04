@@ -25,7 +25,11 @@
         {%- endunless -%}
 
 		{%- if section.settings.image -%}
-			<img class="relative" style="z-index: -1; max-height:100%;" src="{{ section.settings.image | image_url }}" width="100%" height="100%" loading="lazy" />
+			<img class="relative hidden md:!block" style="z-index: -1; max-height:100%;" src="{{ section.settings.image | image_url }}" width="100%" height="100%" loading="lazy" />
+		{%- endif -%}
+
+		{%- if section.settings.mob_image -%}
+			<img class="relative md:hidden h-full" style="z-index: -1; max-height:100%;" src="{{ section.settings.mob_image | image_url }}" width="100%" height="100%" loading="lazy" />
 		{%- endif -%}
     </div>
 
@@ -73,6 +77,12 @@
                 "id": "image",
                 "label": "Image",
                 "info": "Min height 600px recommended"
+            },
+            {
+                "type": "image_picker",
+                "id": "mob_image",
+                "label": "Mobile image",
+                "info": "Min height 500px recommended"
             },
             {
                 "type": "color",
