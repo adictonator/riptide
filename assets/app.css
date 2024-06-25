@@ -571,7 +571,7 @@ blockquote,
 	figure,
 	p,
 	pre {
-  margin: 10px;
+  /*margin: 10px;*/
 }
 
 .visible {
